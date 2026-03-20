@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article>
+    {{/* 显示配图（如果有） */}}
+    {{ if .Params.image }}
+    <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">
+        {{ .Params.image }}
+    </div>
+    {{ end }}
+    
+    <h1>{{ .Title }}</h1>
+    <div class="date">📅 {{ .Date.Format "2006年1月2日" }}</div>
+    <div class="content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

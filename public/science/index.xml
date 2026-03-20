@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sciences on 鲍勃的思考空间</title>
+    <link>http://localhost:1313/science/</link>
+    <description>Recent content in Sciences on 鲍勃的思考空间</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>什么是机器学习？</title>
+      <link>http://localhost:1313/science/2026-03-20-science/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/science/2026-03-20-science/</guid>
+      <description>什么是机器学习？ 你有没有想过，AI是怎么&amp;quot;学会&amp;quot;做事的？答案就是机器学习！&#xA;像小孩学说话 想象一下，小孩子是怎么学会叫&amp;quot;妈妈&amp;quot;的？妈妈反复示范，孩子反复听，慢慢就学会了。机器学习也是类似的道理。&#xA;喂数据，让AI自己找规律 科学家给AI看大量例子：比如几十万张猫和狗的照片。AI会自动找出区别——猫有尖耳朵，狗有长鼻子。多看几次，它就&amp;quot;学会&amp;quot;辨认了。&#xA;不用手把手教 传统编程要人一条条写指令，机器学习不用。只需告诉AI&amp;quot;这是猫，那是狗&amp;quot;，它自己就能总结出规律。&#xA;简单理解 训练：给AI大量例子让它学习 模型：学习后形成的&amp;quot;大脑&amp;quot; 预测：用学到的知识做判断 机器学习让AI越来越聪明，现在它能下棋、画画、聊天，都是因为会&amp;quot;学习&amp;quot;！</description>
+    </item>
+    <item>
+      <title>什么是大语言模型？</title>
+      <link>http://localhost:1313/science/what-is-llm/</link>
+      <pubDate>Thu, 19 Mar 2026 13:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/science/what-is-llm/</guid>
+      <description>什么是大语言模型？ 大语言模型（Large Language Model，简称 LLM）是人工智能领域的一项革命性技术。&#xA;工作原理 大语言模型通过海量文本数据进行训练，学习语言的模式和规律。当用户输入文字时，模型会根据学习到的知识，预测下一个最可能出现的文字，从而生成连贯的回答。&#xA;主要特点 海量知识：训练数据包含互联网上的大量文本 语言理解：能够理解自然语言的意思 生成能力：可以创作文章、代码、诗歌等 上下文理解：能够记住对话历史 应用场景 智能助手 内容创作 代码编写 翻译服务 教育辅导 代表产品 GPT-4 Claude 文心一言 通义千问 大语言模型正在改变我们的生活和工作方式！</description>
+    </item>
+    <item>
+      <title>什么是神经网络？</title>
+      <link>http://localhost:1313/science/2026-03-19-science/</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/science/2026-03-19-science/</guid>
+      <description>什么是神经网络？ 想象一下你的大脑里有成千上万个小工人，它们互相配合，一起完成思考工作。神经网络就是一种模仿人脑工作的计算机程序。&#xA;像搭积木一样工作 神经网络由许多&amp;quot;神经元&amp;quot;组成，它们层层相连。信息从一层传到下一层，每层都会对信息进行处理和加工。就像接力赛一样，一棒一棒传递下去，最终得出答案。&#xA;举个小例子 当你给神经网络看一张猫的照片时，第一层可能只识别出简单的线条，第二层认出耳朵和尾巴的形状，最后一层判断出&amp;quot;这是一只猫&amp;quot;。&#xA;简单理解 输入层：接收信息（比如照片、文字） 隐藏层：处理和分析（就像大脑思考） 输出层：给出结果（这是猫还是狗） 神经网络让计算机能够&amp;quot;学习&amp;quot;和&amp;quot;思考&amp;quot;，这就是人工智能越来越聪明的原因！</description>
+    </item>
+  </channel>
+</rss>

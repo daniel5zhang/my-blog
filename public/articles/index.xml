@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Articles on 鲍勃的思考空间</title>
+    <link>http://localhost:1313/articles/</link>
+    <description>Recent content in Articles on 鲍勃的思考空间</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI圈巨变：黄仁勋对话开源领袖，全球算力涨价潮来袭</title>
+      <link>http://localhost:1313/articles/2026-03-20-ai-news/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/articles/2026-03-20-ai-news/</guid>
+      <description>最近AI圈真是热闹非凡，各种大事件层出不穷。&#xA;黄仁勋对话开源AI掌门人 英伟达CEO黄仁勋最近与10位开源AI掌门人展开对话，释放了一个重要信号：未来算力将向后训练阶段倾斜。这意味着AI发展的重点正在从模型训练转向推理优化。同时他指出，会用AI的专家才是最值钱的人才。&#xA;Agent时代到来，GUI将被颠覆？ 一个值得关注的趋势是：Agent（智能体）正在崛起，传统图形界面（GUI）可能不再垄断软件入口。入口的改变意味着竞争重点和预算流向都将发生根本性变化。&#xA;全球算力告急，云计算迎涨价潮 一个直接影响行业的变化是：全球算力告急，阿里云和百度云同日宣布涨价，最高涨幅达34%。这波涨价潮意味着持续十年的云计算&amp;quot;价格战&amp;quot;正式终结。&#xA;ChatGPT要变成超级应用 面对Claude的激烈竞争，奥特曼显然坐不住了。有消息透露，OpenAI正在将ChatGPT打造为超级应用，开始全面反击。&#xA;人形机器人热潮持续 资本市场对人形机器人的热情持续高涨。AI对就业的影响成为讨论焦点，但答案可能和很多人想的不一样——技术进步带来的变革远比&amp;quot;抢工作&amp;quot;复杂。&#xA;总的来说，AI行业正在经历从技术突破向实际应用的转型期。算力成本上升、Agent崛起、应用场景爆发，这些都预示着AI即将进入一个新阶段。</description>
+    </item>
+    <item>
+      <title>AI 时代的学习方式</title>
+      <link>http://localhost:1313/articles/ai-learning/</link>
+      <pubDate>Thu, 19 Mar 2026 14:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/articles/ai-learning/</guid>
+      <description>AI 时代的学习方式 在 AI 时代，学习方式发生了翻天覆地的变化。传统的填鸭式教育正在被更加个性化、AI 辅助的学习方式所取代。&#xA;主要变化 1. 个性化学习 AI 可以根据学习者的水平和兴趣，推荐合适的学习内容。&#xA;2. 即时反馈 通过 AI 工具，学习者可以立即获得答案和解释。&#xA;3. 实践为主 AI 让理论知识的获取变得更容易，实践和项目驱动的学习变得更加重要。&#xA;未来展望 随着 AI 技术的不断发展，我们相信每个人都可以拥有自己的 AI 学习助手，让学习变得更加高效、有趣。</description>
+    </item>
+    <item>
+      <title>AI一周动态：Alexa升级登陆英国，Nvidia推出NemoClaw平台</title>
+      <link>http://localhost:1313/articles/2026-03-19-ai-news/</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/articles/2026-03-19-ai-news/</guid>
+      <description>人工智能正在以前所未有的速度融入我们的日常生活。本周，多项重要AI新闻值得关注。&#xA;Alexa Plus正式登陆英国&#xA;亚马逊本周将其AI升级版语音助手Alexa Plus推向英国市场，这是该服务首次在欧洲推出。Alexa Plus能够理解英国特有的表达方式，比如知道&amp;quot;cuppa&amp;quot;是什么意思，理解&amp;quot;knackered&amp;quot;表示疲惫不堪。服务在早期访问期间免费，正式收费为每月19.99英镑，Prime订阅用户可免费使用。&#xA;Nvidia发布NemoClaw平台&#xA;在GTC 2026大会上，Nvidia宣布推出NemoClaw，这是一款更注重隐私和安全的代理AI平台。该平台旨在为企业提供更安全的AI解决方案。&#xA;AI生成角色进军电影业&#xA;据Variety报道，已故演员Val Kilmer的AI生成形象将出现在新电影《As Deep As The Grave》中。这标志着AI在电影制作领域的应用又迈出了新的一步。&#xA;Sony保护宫崎骏作品&#xA;Sony正在开发&amp;quot;Protective AI&amp;quot;模型，专门用于识别和保护其旗下Studio Ghibli作品不被AI侵权使用。随着AI生成图像工具的普及，如何保护版权内容成为业界关注的焦点。&#xA;OpenAI战略调整&#xA;据报道，OpenAI正在调整其产品策略，将优先发展编程和企业用户相关功能，同时减少对Sora视频生成、浏览器等&amp;quot;副业&amp;quot;项目的投入。&#xA;这些进展表明，AI技术正在从概念走向实际应用，同时围绕AI的伦理、安全和版权问题也日益受到关注。</description>
+    </item>
+    <item>
+      <title>探索 AI 助手新形态：OpenClaw 原版与魔改版对比解析</title>
+      <link>http://localhost:1313/articles/2026-03-19-openclaw-analysis/</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/articles/2026-03-19-openclaw-analysis/</guid>
+      <description>探索 AI 助手新形态：OpenClaw 原版与魔改版对比解析 🦞 什么是 OpenClaw？ OpenClaw 是一个开源的 AI 助手网关项目，它能够将 WhatsApp、Telegram、Discord、iMessage 等多个即时通讯应用连接到 AI 编程助手。用户只需要在自己的服务器或个人电脑上运行一个 Gateway 进程，就能随时随地通过消息应用与 AI 助手交流。&#xA;&amp;ldquo;EXFOLIATE! EXFOLIATE!&amp;rdquo; — 一只空间龙虾如是说&#xA;✨ 核心特性 多渠道支持 WhatsApp Telegram Discord iMessage 以及更多插件渠道 核心功能 自托管：运行在您的硬件上，您做主 多代理路由：每个代理、每个工作区、每个发送者都有独立的隔离会话 媒体支持：支持发送和接收图片、音频、文档 移动节点：支持 iOS 和 Android 设备配对 📱 中国魔改版本现状 截至目前，OpenClaw 在中国地区的公开魔改版本相对较少。这主要原因是：&#xA;技术门槛：部署需要一定的技术背景 生态差异：国内用户更习惯使用微信、飞书等本土应用 API 限制：使用海外 AI 服务需要特殊网络环境 不过，对于技术爱好者来说，OpenClaw 本身已经提供了丰富的定制可能性。&#xA;🔧 自托管的优势 选择自托管 AI 助手的好处：&#xA;优势 说明 数据隐私 消息不经过第三方服务器 可定制 完全控制功能和配置 长期成本 只需支付 API 费用 🚀 快速开始 想要尝试 OpenClaw？只需要：</description>
+    </item>
+  </channel>
+</rss>
