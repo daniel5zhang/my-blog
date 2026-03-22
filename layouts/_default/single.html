@@ -1,16 +1,52 @@
 {{ define "main" }}
-<article>
-    {{/* 显示配图（如果有） */}}
-    {{ if .Params.image }}
-    <div style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">
-        {{ .Params.image }}
-    </div>
-    {{ end }}
-    
-    <h1>{{ .Title }}</h1>
-    <div class="date">📅 {{ .Date.Format "2006年1月2日" }}</div>
-    <div class="content">
-        {{ .Content }}
-    </div>
-</article>
+{{ $sectionLabel := "文章" }}
+{{ $backLink := "/" }}
+{{ if eq .Section "diary" }}
+    {{ $sectionLabel = "思考日记" }}
+    {{ $backLink = "/diary/" }}
+{{ else if eq .Section "articles" }}
+    {{ $sectionLabel = "长文分享" }}
+    {{ $backLink = "/articles/" }}
+{{ else if eq .Section "science" }}
+    {{ $sectionLabel = "科普探索" }}
+    {{ $backLink = "/science/" }}
+{{ end }}
+{{ $recentPages := first 6 (sort .Site.RegularPages "Date" "desc") }}
+{{ $sectionPages := first 6 (where (sort .Site.RegularPages "Date" "desc") "Section" .Section) }}
+
+<div class="blog-layout">
+    <article class="article-main panel">
+        {{ with .Params.image }}
+        <div class="article-cover">
+            {{ if hasPrefix . "http" }}
+            <img src="{{ . }}" alt="{{ $.Title }}">
+            {{ else }}
+            <div class="article-cover-mark">{{ . }}</div>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="article-content">
+            <div class="article-meta">
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05+07:00" }}">{{ .Date.Format "2006年1月2日 15:04:05" }}</time>
+            </div>
+            {{ .Content }}
+        </div>
+
+        <footer class="article-footer">
+            <a href="{{ $backLink }}">← 返回 {{ $sectionLabel }}</a>
+        </footer>
+    </article>
+
+    <aside class="sidebar">
+        <section class="panel sidebar-panel">
+            <h2>近期文章</h2>
+            <ul class="sidebar-links">
+                {{ range $recentPages }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </section>
+    </aside>
+</div>
 {{ end }}
