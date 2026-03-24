@@ -6,6 +6,10 @@
 - `agent-roles.md`：各 Agent 职责边界
 - `distribution-sop.md`：网站母稿到外部分发改写 SOP
 - `automation-boundaries.md`：半自动运营边界与节奏
+- `topic-pool-template.md`：选题池模板
+- `content-calendar-template.md`：内容日历 / 发布日历模板
+- `website-draft-template.md`：网站母稿模板
+- `distribution-rewrite-templates.md`：多平台改写模板
 
 ## 部署与切换
 - `edgeone-deploy.md`：EdgeOne Pages 部署说明
