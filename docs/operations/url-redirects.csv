@@ -1,0 +1,10 @@
+old_path,new_path,status,notes
+/,/,"done",Homepage redirect
+/articles,/articles,"done",Article listing page
+/diary,,"batch_2_exclude","Batch 2: Diary not migrated in batch 1; old site path preserved"
+/science,/articles?category=science,"pending_redirect","Science merged into articles with category filter; article-level mapping in batch 2"
+/categories,/categories,"done",Categories listing page
+/tags,/tags,"done",Tags listing page
+/index.xml,/rss.xml,"done",RSS feed moved to /rss.xml
+/feed.json,/feed.json,"done",JSON feed - same path
+/sitemap.xml,/sitemap.xml,"done",Sitemap - same path

@@ -1,0 +1,32 @@
+# Docker Compose 配置
+# 用于本地开发环境启动
+
+services:
+  # Astro 开发服务器
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4321:80"
+    environment:
+      - PUBLIC_SITE_TITLE=${PUBLIC_SITE_TITLE:-My Site}
+      - PUBLIC_SITE_URL=${PUBLIC_SITE_URL:-http://localhost:4321}
+    profiles:
+      - prod
+
+  # 开发模式（使用 npm run dev）
+  dev:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "4321:4321"
+    environment:
+      - PUBLIC_SITE_TITLE=${PUBLIC_SITE_TITLE:-My Site}
+      - PUBLIC_SITE_URL=${PUBLIC_SITE_URL:-http://localhost:4321}
+    command: sh -c "npm install && npm run dev -- --host"
+    profiles:
+      - dev

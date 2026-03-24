@@ -1,0 +1,64 @@
+{
+  "assetResults": [
+    {
+      "webPath": "/images/ai-agent-workflow.jpg",
+      "status": "missing",
+      "source": null,
+      "target": null
+    },
+    {
+      "webPath": "/images/ai-agent-office.jpg",
+      "status": "missing",
+      "source": null,
+      "target": null
+    },
+    {
+      "webPath": "/images/alexa-uk.jpg",
+      "status": "missing",
+      "source": null,
+      "target": null
+    }
+  ],
+  "localRefs": [
+    {
+      "file": "src/content/articles/2026-03-23-ai-agents-workplace.md",
+      "path": "/images/ai-agent-office.jpg"
+    },
+    {
+      "file": "src/content/articles/2026-03-23-alexa-uk.md",
+      "path": "/images/alexa-uk.jpg"
+    },
+    {
+      "file": "src/content/articles/2026-03-24-ai-news.md",
+      "path": "/images/ai-agent-workflow.jpg"
+    }
+  ],
+  "remoteRefs": [
+    {
+      "file": "src/content/articles/2026-03-19-openclaw-analysis.md",
+      "url": "https://mintcdn.com/clawdhub/-t5HSeZ3Y_0_wH4i/assets/openclaw-logo-text-dark.png"
+    },
+    {
+      "file": "src/content/articles/2026-03-23-ai-moderation-replacement.md",
+      "url": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=400&fit=crop"
+    },
+    {
+      "file": "src/content/articles/2026-03-23-ai-news.md",
+      "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      "file": "src/content/articles/2026-03-23-wordpress-ai-writing.md",
+      "url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
+    }
+  ],
+  "internalRefs": [
+    {
+      "file": "src/content/articles/2026-03-23-ai-agents-workplace.md",
+      "path": "/images/ai-agent-office.jpg"
+    },
+    {
+      "file": "src/content/articles/2026-03-24-ai-news.md",
+      "path": "/images/ai-agent-workflow.jpg"
+    }
+  ]
+}

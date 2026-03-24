@@ -1,0 +1,58 @@
+---
+import { siteTitle } from '../lib/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="copyright">
+      &copy; {currentYear} {siteTitle}. All rights reserved.
+    </p>
+    <div class="footer-links">
+      <a href="/subscribe">订阅</a>
+      <a href="/search">搜索</a>
+      <a href="/archive">归档</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+    margin-top: auto;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .copyright {
+    margin: 0;
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary, #6b7280);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-color, #3b82f6);
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+const projects = await getCollection('projects', ({ data }) => !data.draft);
+
+// 分别统计标签在文章和项目中的使用次数
+const tagMap = new Map<string, { articles: number; projects: number }>();
+for (const article of articles) {
+  for (const tag of article.data.tags) {
+    const current = tagMap.get(tag) ?? { articles: 0, projects: 0 };
+    current.articles += 1;
+    tagMap.set(tag, current);
+  }
+}
+for (const project of projects) {
+  for (const tag of project.data.tags) {
+    const current = tagMap.get(tag) ?? { articles: 0, projects: 0 };
+    current.projects += 1;
+    tagMap.set(tag, current);
+  }
+}
+
+const tags = Array.from(tagMap.entries())
+  .map(([name, counts]) => ({ name, ...counts, total: counts.articles + counts.projects }))
+  .sort((a, b) => b.total - a.total);
+---
+
+<BaseLayout title="标签" description="按标签浏览内容">
+  <section class="page-header">
+    <h1>标签</h1>
+    <p>标签用于串联文章与项目中的细粒度主题。</p>
+  </section>
+
+  {tags.length > 0 ? (
+    <div class="tag-grid">
+      {tags.map((tag) => (
+        <a class="tag-card" href={`/tags/${tag.name}`}>
+          <strong>{tag.name}</strong>
+          <span>{tag.articles} 篇 · {tag.projects} 个</span>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <p class="empty-state">暂无标签内容。</p>
+  )}
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-header p,
+  .empty-state {
+    color: var(--text-secondary);
+  }
+
+  .tag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .tag-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    text-decoration: none;
+    color: inherit;
+    background: var(--bg-secondary);
+  }
+
+  .tag-card span {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+</style>

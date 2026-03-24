@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="关于" description="关于我">
+  <h1>关于</h1>
+
+  <section class="about-section">
+    <h2>我是谁</h2>
+    <p>
+      你好，我是 Daniel，一个热爱技术和编程的个人开发者。
+    </p>
+    <p>
+      我专注于前端开发，包括但不限于：
+    </p>
+    <ul>
+      <li>Web 前端开发</li>
+      <li>TypeScript / React / Vue</li>
+      <li>Astro / Next.js 等现代框架</li>
+      <li>工程化与自动化</li>
+    </ul>
+  </section>
+
+  <section class="about-section">
+    <h2>联系方式</h2>
+    <ul class="contact-list">
+      <li>GitHub: <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+      <li>Email: hello@example.com</li>
+    </ul>
+  </section>
+
+  <section class="about-section">
+    <h2>这个网站</h2>
+    <p>
+      这个网站使用 Astro 5 + TypeScript 构建，托管在 Cloudflare Pages 上。
+    </p>
+    <p>
+      它使用 Astro Content Collections 来管理内容，支持 Markdown 和 MDX。
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-section h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .about-section ul {
+    padding-left: 1.5rem;
+  }
+
+  .about-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-list li {
+    margin-bottom: 0.75rem;
+  }
+</style>

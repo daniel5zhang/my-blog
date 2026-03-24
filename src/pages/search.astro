@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="搜索" description="使用全文索引搜索文章与项目内容">
+  <h1>搜索</h1>
+  <p class="search-intro">搜索结果由 Pagefind 提供，支持标题、摘要与正文内容检索。</p>
+
+  <div id="search-ui" class="search-ui"></div>
+  <noscript>
+    <p class="search-state">搜索需要启用 JavaScript。</p>
+  </noscript>
+
+  <script is:inline>
+    const container = document.getElementById('search-ui');
+
+    if (container) {
+      container.innerHTML = '<p class="search-state">正在加载搜索索引...</p>';
+
+      const loadScript = (src) =>
+        new Promise((resolve, reject) => {
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            resolve(existing);
+            return;
+          }
+
+          const script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          script.onload = () => resolve(script);
+          script.onerror = () => reject(new Error(`Failed to load ${src}`));
+          document.head.appendChild(script);
+        });
+
+      const loadStylesheet = (href) => {
+        if (document.querySelector(`link[href="${href}"]`)) return;
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      };
+
+      const bootstrapSearch = async () => {
+        try {
+          loadStylesheet('/pagefind/pagefind-ui.css');
+          await loadScript('/pagefind/pagefind-ui.js');
+
+          container.innerHTML = '';
+
+          new window.PagefindUI({
+            element: '#search-ui',
+            showSubResults: true,
+            resetStyles: false,
+            translations: {
+              placeholder: '搜索文章和项目...',
+              clear_search: '清空搜索',
+              load_more: '加载更多',
+              search_label: '搜索站内内容',
+              filters_label: '筛选',
+              zero_results: '未找到相关内容，请换个关键词试试。',
+              many_results: '[COUNT] 条结果',
+              one_result: '1 条结果',
+              searching: '搜索中...',
+            },
+          });
+        } catch (error) {
+          console.error('Pagefind 初始化失败', error);
+          container.innerHTML = '<p class="search-state">搜索暂时不可用，请稍后刷新重试。</p>';
+        }
+      };
+
+      bootstrapSearch();
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .search-intro {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .search-ui {
+    min-height: 12rem;
+  }
+
+  .search-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+  }
+
+  :global(.pagefind-ui) {
+    --pagefind-ui-primary: var(--accent-color);
+    --pagefind-ui-text: var(--text-primary);
+    --pagefind-ui-background: var(--bg-primary);
+    --pagefind-ui-border: var(--border-color);
+    --pagefind-ui-tag: var(--bg-secondary);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-image-border-radius: 12px;
+    --pagefind-ui-scale: 1;
+  }
+
+  :global(.pagefind-ui__search-input) {
+    border-radius: 12px;
+  }
+</style>

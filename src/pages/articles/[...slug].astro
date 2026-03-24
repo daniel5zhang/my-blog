@@ -1,0 +1,266 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiscusComments from '../../components/GiscusComments.astro';
+import { siteConfig } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+  );
+
+  return articles.map((article, index) => ({
+    params: { slug: article.slug },
+    props: {
+      article,
+      newerArticle: index > 0 ? articles[index - 1] : null,
+      olderArticle: index < articles.length - 1 ? articles[index + 1] : null,
+    },
+  }));
+}
+
+const { article, newerArticle, olderArticle } = Astro.props;
+const { Content } = await article.render();
+const seoTitle = article.data.seoTitle ?? article.data.title;
+const seoDescription = article.data.seoDescription ?? article.data.summary;
+const articleImage = article.data.cover;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.data.title,
+  description: seoDescription,
+  inLanguage: siteConfig.locale,
+  author: {
+    '@type': 'Person',
+    name: siteConfig.author,
+  },
+  mainEntityOfPage: `${siteConfig.siteUrl}/articles/${article.slug}`,
+  datePublished: article.data.publishedAt.toISOString(),
+  dateModified: (article.data.updatedAt ?? article.data.publishedAt).toISOString(),
+  articleSection: article.data.category,
+  keywords: article.data.tags,
+  image: articleImage ? new URL(articleImage, siteConfig.siteUrl).toString() : undefined,
+};
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  image={articleImage}
+  seo={{
+    type: 'article',
+    publishedTime: article.data.publishedAt,
+    updatedTime: article.data.updatedAt,
+    keywords: article.data.tags,
+    schemaData: articleSchema,
+  }}
+>
+  <article class="article-shell">
+    <header class="article-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span>/</span>
+        <a href="/articles">文章</a>
+        {article.data.category && (
+          <>
+            <span>/</span>
+            <a href={`/categories/${article.data.category}`}>{article.data.category}</a>
+          </>
+        )}
+      </nav>
+
+      <h1>{article.data.title}</h1>
+      <p class="article-summary">{article.data.summary}</p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span class="meta-label">发布时间</span>
+          <strong>{article.data.publishedAt.toLocaleDateString('zh-CN')}</strong>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">更新时间</span>
+          <strong>{(article.data.updatedAt ?? article.data.publishedAt).toLocaleDateString('zh-CN')}</strong>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">分类</span>
+          <strong>{article.data.category ?? '未分类'}</strong>
+        </div>
+      </div>
+
+      {article.data.tags.length > 0 && (
+        <div class="tags">
+          {article.data.tags.map((tag) => (
+            <a class="tag" href={`/tags/${tag}`}>#{tag}</a>
+          ))}
+        </div>
+      )}
+
+      {article.data.cover && (
+        <div class="cover-wrap">
+          <img src={article.data.cover} alt={article.data.title} class="cover-image" />
+        </div>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <GiscusComments term={article.slug} />
+
+    <footer class="article-footer">
+      <div class="article-nav">
+        <div class="nav-card">
+          <span class="meta-label">上一篇</span>
+          {olderArticle ? <a href={`/articles/${olderArticle.slug}`}>{olderArticle.data.title}</a> : <span>已经到底了</span>}
+        </div>
+        <div class="nav-card align-right">
+          <span class="meta-label">下一篇</span>
+          {newerArticle ? <a href={`/articles/${newerArticle.slug}`}>{newerArticle.data.title}</a> : <span>已经是最新</span>}
+        </div>
+      </div>
+      <a href="/articles" class="back-link">← 返回文章列表</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-shell {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .article-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .article-summary {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .meta-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+  }
+
+  .meta-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.7rem;
+    background: var(--bg-secondary);
+    border-radius: 999px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .cover-wrap {
+    margin-top: 1.5rem;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+
+  .cover-image {
+    width: 100%;
+    display: block;
+    background: var(--bg-secondary);
+  }
+
+  .prose {
+    line-height: 1.85;
+  }
+
+  .prose :global(h2) {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .prose :global(h3) {
+    margin-top: 1.5rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+  }
+
+  .article-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .article-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-card {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+  }
+
+  .align-right {
+    text-align: right;
+  }
+
+  .back-link {
+    display: inline-block;
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import { giscusConfig, isGiscusEnabled } from '../lib/site';
+
+interface Props {
+  term?: string;
+}
+
+const { term = Astro.url.pathname } = Astro.props;
+---
+
+<section class="comments-section" aria-labelledby="comments-title">
+  <div class="comments-card">
+    <div class="comments-head">
+      <h2 id="comments-title">评论</h2>
+      <p>欢迎在这里补充观点、纠错或继续讨论。</p>
+    </div>
+
+    {isGiscusEnabled ? (
+      <div class="giscus-wrap">
+        <script is:inline
+          src="https://giscus.app/client.js"
+          data-repo={giscusConfig.repo}
+          data-repo-id={giscusConfig.repoId}
+          data-category={giscusConfig.category}
+          data-category-id={giscusConfig.categoryId}
+          data-mapping={giscusConfig.mapping}
+          data-strict="0"
+          data-reactions-enabled={giscusConfig.reactionsEnabled}
+          data-emit-metadata={giscusConfig.emitMetadata}
+          data-input-position={giscusConfig.inputPosition}
+          data-theme={giscusConfig.theme}
+          data-lang={giscusConfig.lang}
+          data-term={term}
+          crossorigin="anonymous"
+          async
+        ></script>
+      </div>
+    ) : (
+      <p class="comments-disabled">评论未启用</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .comments-section {
+    margin-top: 2.5rem;
+  }
+
+  .comments-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--bg-secondary);
+  }
+
+  .comments-head {
+    margin-bottom: 1rem;
+  }
+
+  .comments-head h2 {
+    margin-bottom: 0.35rem;
+  }
+
+  .comments-head p,
+  .comments-disabled {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+</style>

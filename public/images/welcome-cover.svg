@@ -1,0 +1,6 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="680" rx="24" fill="#EFF6FF"/>
+  <rect x="60" y="60" width="1080" height="560" rx="24" fill="#DBEAFE"/>
+  <text x="110" y="250" fill="#1D4ED8" font-size="64" font-family="Arial, sans-serif" font-weight="700">欢迎访问我的新网站</text>
+  <text x="110" y="330" fill="#1E3A8A" font-size="30" font-family="Arial, sans-serif">Astro 5 · TypeScript · 内容驱动站点</text>
+</svg>

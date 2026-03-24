@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const archiveMap = new Map<string, typeof articles>();
+for (const article of articles) {
+  const year = article.data.publishedAt.getFullYear();
+  const month = String(article.data.publishedAt.getMonth() + 1).padStart(2, '0');
+  const key = `${year}-${month}`;
+  const current = archiveMap.get(key) ?? [];
+  current.push(article);
+  archiveMap.set(key, current);
+}
+
+const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
+  const [year, month] = key.split('-');
+  return {
+    key,
+    label: `${year} 年 ${month} 月`,
+    count: items.length,
+    items,
+  };
+});
+---
+
+<BaseLayout title="归档" description="按年月归档文章内容">
+  <section class="page-header">
+    <h1>归档</h1>
+    <p>按年月查看已发布文章，适合长期内容回顾。</p>
+  </section>
+
+  {archiveGroups.length > 0 ? (
+    <div class="archive-list">
+      {archiveGroups.map((group) => (
+        <section class="archive-group">
+          <h2>{group.label} <span class="archive-count">共 {group.count} 篇</span></h2>
+          <ul>
+            {group.items.map((article) => (
+              <li>
+                <time datetime={article.data.publishedAt.toISOString()}>
+                  {article.data.publishedAt.toLocaleDateString('zh-CN')}
+                </time>
+                <a href={`/articles/${article.slug}`}>{article.data.title}</a>
+                <p class="archive-summary">{article.data.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  ) : (
+    <p class="empty-state">暂无可归档文章。</p>
+  )}
+</BaseLayout>
+
+<style>
+  .page-header,
+  .archive-group {
+    margin-bottom: 2rem;
+  }
+
+  .page-header p,
+  .empty-state,
+  .archive-group time {
+    color: var(--text-secondary);
+  }
+
+  .archive-group h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .archive-count {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--text-secondary);
+  }
+
+  .archive-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .archive-group li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .archive-group li a {
+    font-weight: 500;
+  }
+
+  .archive-summary {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>

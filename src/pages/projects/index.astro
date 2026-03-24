@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+// 分离 featured 和普通项目
+const featuredProjects = projects.filter(p => p.data.featured);
+const normalProjects = projects.filter(p => !p.data.featured);
+---
+
+<BaseLayout title="项目" description="项目作品展示">
+  <h1>项目</h1>
+  <p class="page-description">个人项目作品展示</p>
+
+  {projects.length > 0 ? (
+    <>
+      {featuredProjects.length > 0 && (
+        <section class="featured-section">
+          <h2 class="section-title">推荐项目</h2>
+          <div class="projects-grid featured-grid">
+            {featuredProjects.map((project) => (
+              <article class="card project-card featured">
+                <div class="featured-badge">推荐</div>
+                <div class="card-header">
+                  <h2>
+                    <a href={`/projects/${project.slug}`}>{project.data.name}</a>
+                  </h2>
+                  {project.data.status && (
+                    <span class={`status-badge status-${project.data.status}`}>
+                      {project.data.status}
+                    </span>
+                  )}
+                </div>
+                <p class="project-summary">{project.data.summary}</p>
+                <div class="project-meta">
+                  <time datetime={project.data.publishedAt.toISOString()}>
+                    {project.data.publishedAt.toLocaleDateString('zh-CN')}
+                  </time>
+                  {project.data.category && <span class="category">· {project.data.category}</span>}
+                  {project.data.updatedAt && <span class="updated">· 更新于 {project.data.updatedAt.toLocaleDateString('zh-CN')}</span>}
+                </div>
+                {project.data.stack.length > 0 && (
+                  <div class="stack-section">
+                    <span class="section-label">技术栈</span>
+                    <div class="stack-list">
+                      {project.data.stack.map((item) => (
+                        <span class="stack-pill">{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.data.tags.length > 0 && (
+                  <div class="tags-section">
+                    <span class="section-label">标签</span>
+                    <div class="tags">
+                      {project.data.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div class="project-links">
+                  {project.data.demoUrl && (
+                    <a href={project.data.demoUrl} target="_blank" rel="noopener" class="btn btn-primary">
+                      演示
+                    </a>
+                  )}
+                  {project.data.repoUrl && (
+                    <a href={project.data.repoUrl} target="_blank" rel="noopener" class="btn">
+                      代码
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {normalProjects.length > 0 && (
+        <section class="normal-section">
+          {featuredProjects.length > 0 && <h2 class="section-title">全部项目</h2>}
+          <div class="projects-grid">
+            {normalProjects.map((project) => (
+              <article class="card project-card">
+                <div class="card-header">
+                  <h2>
+                    <a href={`/projects/${project.slug}`}>{project.data.name}</a>
+                  </h2>
+                  {project.data.status && (
+                    <span class={`status-badge status-${project.data.status}`}>
+                      {project.data.status}
+                    </span>
+                  )}
+                </div>
+                <p class="project-summary">{project.data.summary}</p>
+                <div class="project-meta">
+                  <time datetime={project.data.publishedAt.toISOString()}>
+                    {project.data.publishedAt.toLocaleDateString('zh-CN')}
+                  </time>
+                  {project.data.category && <span class="category">· {project.data.category}</span>}
+                  {project.data.updatedAt && <span class="updated">· 更新于 {project.data.updatedAt.toLocaleDateString('zh-CN')}</span>}
+                </div>
+                {project.data.stack.length > 0 && (
+                  <div class="stack-section">
+                    <span class="section-label">技术栈</span>
+                    <div class="stack-list">
+                      {project.data.stack.map((item) => (
+                        <span class="stack-pill">{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.data.tags.length > 0 && (
+                  <div class="tags-section">
+                    <span class="section-label">标签</span>
+                    <div class="tags">
+                      {project.data.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div class="project-links">
+                  {project.data.demoUrl && (
+                    <a href={project.data.demoUrl} target="_blank" rel="noopener" class="btn btn-primary">
+                      演示
+                    </a>
+                  )}
+                  {project.data.repoUrl && (
+                    <a href={project.data.repoUrl} target="_blank" rel="noopener" class="btn">
+                      代码
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  ) : (
+    <p>暂无项目</p>
+  )}
+</BaseLayout>
+
+<style>
+  .page-description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  .featured-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    position: relative;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .project-card.featured {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .card-header h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .card-header h2 a:hover {
+    color: #3b82f6;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .status-badge.status-active,
+  .status-badge.status-进行中 {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+  }
+
+  .status-badge.status-completed,
+  .status-badge.status已完成 {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+  }
+
+  .status-badge.status-maintaining,
+  .status-badge.status维护中 {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+  }
+
+  .status-badge.status-archived,
+  .status-badge.status已归档 {
+    background: rgba(107, 114, 128, 0.15);
+    color: #6b7280;
+  }
+
+  .project-summary {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+
+  .project-meta {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .category,
+  .updated {
+    font-size: 0.8rem;
+  }
+
+  .stack-section,
+  .tags-section {
+    margin-bottom: 0.75rem;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .stack-list,
+  .tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .stack-pill,
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    color: var(--text-secondary);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+</style>

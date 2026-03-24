@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+// 分离 featured 和普通文章
+const featuredArticles = articles.filter(a => a.data.featured);
+const normalArticles = articles.filter(a => !a.data.featured);
+---
+
+<BaseLayout title="文章" description="技术文章列表">
+  <h1>文章</h1>
+  <p class="page-description">分享技术心得和实践经验</p>
+
+  {articles.length > 0 ? (
+    <>
+      {featuredArticles.length > 0 && (
+        <section class="featured-section">
+          <h2 class="section-title">推荐文章</h2>
+          <div class="featured-list">
+            {featuredArticles.map((article) => (
+              <article class="article-item featured">
+                <span class="featured-badge">推荐</span>
+                <h2>
+                  <a href={`/articles/${article.slug}`}>{article.data.title}</a>
+                </h2>
+                <p class="article-meta">
+                  <time datetime={article.data.publishedAt.toISOString()}>
+                    {article.data.publishedAt.toLocaleDateString('zh-CN')}
+                  </time>
+                  {article.data.category && (
+                    <span class="category">{article.data.category}</span>
+                  )}
+                  {article.data.updatedAt && (
+                    <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>
+                  )}
+                </p>
+                <p class="article-summary">{article.data.summary}</p>
+                {article.data.tags.length > 0 && (
+                  <div class="tags">
+                    {article.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {normalArticles.length > 0 && (
+        <section class="normal-section">
+          {featuredArticles.length > 0 && <h2 class="section-title">全部文章</h2>}
+          <div class="articles-list">
+            {normalArticles.map((article) => (
+              <article class="article-item">
+                <h2>
+                  <a href={`/articles/${article.slug}`}>{article.data.title}</a>
+                </h2>
+                <p class="article-meta">
+                  <time datetime={article.data.publishedAt.toISOString()}>
+                    {article.data.publishedAt.toLocaleDateString('zh-CN')}
+                  </time>
+                  {article.data.category && (
+                    <span class="category">{article.data.category}</span>
+                  )}
+                  {article.data.updatedAt && (
+                    <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>
+                  )}
+                </p>
+                <p class="article-summary">{article.data.summary}</p>
+                {article.data.tags.length > 0 && (
+                  <div class="tags">
+                    {article.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  ) : (
+    <p>暂无文章</p>
+  )}
+</BaseLayout>
+
+<style>
+  .page-description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  .featured-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .featured-list,
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .article-item {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+  }
+
+  .article-item.featured {
+    padding: 1.25rem;
+    padding-top: 1.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .article-item h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .article-item h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .article-item h2 a:hover {
+    color: #3b82f6;
+  }
+
+  .article-meta {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .category {
+    margin-left: 1rem;
+    padding: 0.1rem 0.4rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+
+  .updated {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .article-summary {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    color: var(--text-secondary);
+  }
+</style>
