@@ -11,6 +11,12 @@
 - `website-draft-template.md`：网站母稿模板
 - `distribution-rewrite-templates.md`：多平台改写模板
 
+## 真实台账与样板流程
+- `topic-pool-live.md`：真实选题池（第一版）
+- `content-calendar-live-2026-03.md`：2026-03 内容日历 / 发布日历（第一版）
+- `sample-workflow-ai-agent.md`：样板流程 01（AI Agent 工作流）
+- `sample-workflow-openclaw.md`：样板流程 02（OpenClaw 观察）
+
 ## 部署与切换
 - `edgeone-deploy.md`：EdgeOne Pages 部署说明
 - `local-deploy.md`：本地部署说明
