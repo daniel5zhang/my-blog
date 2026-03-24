@@ -14,6 +14,8 @@
 - `publish-queue.md`：待发布池
 - `release-review-checklist.md`：真实发布前人工审核口径
 - `homepage-and-topics-curation.md`：首页推荐位与专题挂载编排规则
+- `first-pilot-final-review.md`：第一次真实试运行终审与收口清单
+- `first-pilot-plan.md`：第一次真实小规模试运行方案
 
 ## 真实台账与样板流程
 - `topic-pool-live.md`：真实选题池（第一版）
