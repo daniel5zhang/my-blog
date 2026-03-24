@@ -1,257 +1,71 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { siteConfig } from '../../lib/site';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
   return projects.map((project) => ({
     params: { slug: project.slug },
-    props: { project },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await project.render();
-const seoTitle = project.data.seoTitle ?? project.data.name;
-const seoDescription = project.data.seoDescription ?? project.data.summary;
-const projectImage = project.data.screenshots[0];
-const projectUrl = `${siteConfig.siteUrl}/projects/${project.slug}`;
-const projectSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareSourceCode',
-  name: project.data.name,
-  description: seoDescription,
-  author: {
-    '@type': 'Person',
-    name: siteConfig.author,
-  },
-  url: project.data.demoUrl ?? projectUrl,
-  codeRepository: project.data.repoUrl,
-  datePublished: project.data.publishedAt.toISOString(),
-  dateModified: (project.data.updatedAt ?? project.data.publishedAt).toISOString(),
-  programmingLanguage: project.data.stack,
-  keywords: project.data.tags,
-  image: projectImage ? new URL(projectImage, siteConfig.siteUrl).toString() : undefined,
-};
+const { slug } = Astro.params;
+const slugText = Array.isArray(slug) ? slug.join('/') : slug ?? '';
 ---
 
-<BaseLayout
-  title={seoTitle}
-  description={seoDescription}
-  image={projectImage}
-  seo={{
-    type: 'project',
-    publishedTime: project.data.publishedAt,
-    updatedTime: project.data.updatedAt,
-    keywords: [...project.data.tags, ...project.data.stack],
-    schemaData: projectSchema,
-  }}
->
-  <article class="project-shell">
-    <header class="project-header">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">首页</a>
-        <span>/</span>
-        <a href="/projects">项目</a>
-        {project.data.category && (
-          <>
-            <span>/</span>
-            <a href={`/categories/${project.data.category}`}>{project.data.category}</a>
-          </>
-        )}
-      </nav>
-
-      <h1>{project.data.name}</h1>
-      <p class="project-summary">{project.data.summary}</p>
-
-      <div class="overview-grid">
-        <div class="overview-card">
-          <span class="meta-label">项目状态</span>
-          <strong>{project.data.status ?? '未标注'}</strong>
-        </div>
-        <div class="overview-card">
-          <span class="meta-label">发布时间</span>
-          <strong>{project.data.publishedAt.toLocaleDateString('zh-CN')}</strong>
-        </div>
-        <div class="overview-card">
-          <span class="meta-label">最近更新</span>
-          <strong>{(project.data.updatedAt ?? project.data.publishedAt).toLocaleDateString('zh-CN')}</strong>
-        </div>
-        <div class="overview-card">
-          <span class="meta-label">分类</span>
-          <strong>{project.data.category ?? '未分类'}</strong>
-        </div>
+<BaseLayout title="历史兼容内容" description="项目详情页已不再作为 Daniel实验室 的主前台结构">
+  <section class="compat-page">
+    <p class="kicker">历史兼容详情页</p>
+    <h1>这个项目详情页已退出前台主结构</h1>
+    <p class="lead">
+      当前访问的是历史兼容链接：<code>/projects/{slugText}</code>。Daniel实验室 现在优先通过文章与专题来组织公开内容。
+    </p>
+    <div class="compat-card">
+      <p>
+        底层 `projects` 数据仍保留，主要是为了兼容旧链接与后续整理，不代表它仍是站点主前台内容类型。
+      </p>
+      <div class="actions">
+        <a href="/articles" class="btn btn-primary">去文章页</a>
+        <a href="/topics" class="btn">去专题页</a>
       </div>
-
-      {project.data.stack.length > 0 && (
-        <div class="stack-list">
-          {project.data.stack.map((item) => (
-            <span class="stack-pill">{item}</span>
-          ))}
-        </div>
-      )}
-
-      {project.data.tags.length > 0 && (
-        <div class="tags">
-          {project.data.tags.map((tag) => (
-            <a class="tag" href={`/tags/${tag}`}>#{tag}</a>
-          ))}
-        </div>
-      )}
-
-      <div class="project-actions">
-        {project.data.demoUrl && (
-          <a href={project.data.demoUrl} target="_blank" rel="noopener" class="btn btn-primary">
-            查看演示
-          </a>
-        )}
-        {project.data.repoUrl && (
-          <a href={project.data.repoUrl} target="_blank" rel="noopener" class="btn">
-            查看源码
-          </a>
-        )}
-      </div>
-
-      {project.data.screenshots.length > 0 && (
-        <div class="screenshot-grid">
-          {project.data.screenshots.map((screenshot, index) => (
-            <figure class="shot-card">
-              <img src={screenshot} alt={`${project.data.name} 截图 ${index + 1}`} />
-            </figure>
-          ))}
-        </div>
-      )}
-    </header>
-
-    <div class="prose">
-      <Content />
     </div>
-
-    <footer class="project-footer">
-      <a href="/projects" class="back-link">← 返回项目列表</a>
-    </footer>
-  </article>
+  </section>
 </BaseLayout>
 
 <style>
-  .project-shell {
-    max-width: 920px;
+  .compat-page {
+    max-width: 760px;
     margin: 0 auto;
+    padding: 2rem 0;
   }
 
-  .project-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.75rem;
-    border-bottom: 1px solid var(--border-color);
+  .kicker {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
   }
 
-  .breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+  .lead {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-  }
-
-  .breadcrumb a {
-    color: var(--text-secondary);
-  }
-
-  .project-summary {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
+    line-height: 1.8;
     margin-bottom: 1.5rem;
   }
 
-  .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .overview-card {
-    padding: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background: var(--bg-secondary);
-  }
-
-  .meta-label {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.35rem;
-  }
-
-  .stack-list,
-  .tags {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-  }
-
-  .stack-pill,
-  .tag {
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-  }
-
-  .project-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-
-  .screenshot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-
-  .shot-card {
+  .compat-card {
+    padding: 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    overflow: hidden;
     background: var(--bg-secondary);
   }
 
-  .shot-card img {
-    display: block;
-    width: 100%;
-  }
-
-  .prose {
-    line-height: 1.85;
-  }
-
-  .prose :global(h2) {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .prose :global(h3) {
-    margin-top: 1.5rem;
-  }
-
-  .prose :global(ul),
-  .prose :global(ol) {
+  .compat-card p {
+    color: var(--text-secondary);
     margin-bottom: 1rem;
-    padding-left: 1.5rem;
   }
 
-  .project-footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+  .actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 </style>
