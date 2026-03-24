@@ -3,31 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const articles = await getCollection('articles', ({ data }) => !data.draft);
-const projects = await getCollection('projects', ({ data }) => !data.draft);
 
-const categoryMap = new Map<string, { articles: number; projects: number }>();
+const categoryMap = new Map<string, number>();
 for (const article of articles) {
   if (!article.data.category) continue;
-  const current = categoryMap.get(article.data.category) ?? { articles: 0, projects: 0 };
-  current.articles += 1;
-  categoryMap.set(article.data.category, current);
-}
-for (const project of projects) {
-  if (!project.data.category) continue;
-  const current = categoryMap.get(project.data.category) ?? { articles: 0, projects: 0 };
-  current.projects += 1;
-  categoryMap.set(project.data.category, current);
+  categoryMap.set(article.data.category, (categoryMap.get(article.data.category) ?? 0) + 1);
 }
 
 const categories = Array.from(categoryMap.entries())
-  .map(([name, counts]) => ({ name, ...counts, total: counts.articles + counts.projects }))
-  .sort((a, b) => b.total - a.total);
+  .map(([name, count]) => ({ name, count }))
+  .sort((a, b) => b.count - a.count);
 ---
 
-<BaseLayout title="分类" description="按分类浏览文章与项目">
+<BaseLayout title="分类" description="按主题分类浏览 Daniel实验室 的文章内容">
   <section class="page-header">
     <h1>分类</h1>
-    <p>按主题维度聚合文章与项目，适合快速浏览站点内容结构。</p>
+    <p>分类页现在只服务于文章内容，帮助你按主题快速进入 Daniel实验室 的核心观察方向。</p>
   </section>
 
   {categories.length > 0 ? (
@@ -35,8 +26,7 @@ const categories = Array.from(categoryMap.entries())
       {categories.map((category) => (
         <a class="category-card" href={`/categories/${category.name}`}>
           <h2>{category.name}</h2>
-          <p>{category.articles} 篇文章 · {category.projects} 个项目</p>
-          <span>查看该分类内容 →</span>
+          <p>{category.count} 篇文章</p>
         </a>
       ))}
     </div>
@@ -51,36 +41,28 @@ const categories = Array.from(categoryMap.entries())
   }
 
   .page-header p,
-  .empty-state {
+  .empty-state,
+  .category-card p {
     color: var(--text-secondary);
   }
 
   .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
   }
 
   .category-card {
     display: block;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     background: var(--bg-secondary);
-    color: inherit;
     text-decoration: none;
+    color: inherit;
   }
 
   .category-card h2 {
     margin-bottom: 0.5rem;
-  }
-
-  .category-card p {
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-  }
-
-  .category-card span {
-    font-size: 0.9rem;
   }
 </style>

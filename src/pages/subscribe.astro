@@ -9,17 +9,17 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
 <BaseLayout title="订阅" description="订阅 Daniel实验室 更新">
   <section class="page-header">
     <h1>订阅</h1>
-    <p>Daniel实验室 把订阅放在很前面，因为这里的内容适合被长期跟踪，而不是偶尔路过。</p>
+    <p>Daniel实验室 是文章型内容中枢。网站是母稿，后续外部分发平台会从这里改写，而不是反过来。</p>
   </section>
 
   <section class="info-card">
-    <h2>你会订阅到什么</h2>
-    <p>当前统一订阅范围包括：</p>
+    <h2>订阅范围</h2>
+    <p>当前统一订阅范围只包括站内公开文章更新。</p>
     <ul class="content-list">
       <li>📝 <strong>文章</strong>：AI、自动化、数字工作流相关观察与实践</li>
-      <li>🧭 <strong>专题线索</strong>：随着内容增多，专题页会成为长期入口</li>
+      <li>🧭 <strong>专题沉淀</strong>：专题页作为聚合入口，底层更新仍以文章为主</li>
     </ul>
-    <p class="note">现在先保持统一 Feed，避免一开始就把订阅体系做复杂。</p>
+    <p class="note">项目数据目前仅作历史兼容保留，不再作为站点前台的独立内容类型对外暴露。</p>
   </section>
 
   <section class="feeds-section">
@@ -49,15 +49,6 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
         </div>
       </article>
     </div>
-  </section>
-
-  <section class="info-card">
-    <h2>使用说明</h2>
-    <ul class="instructions">
-      <li>把 Feed 地址丢进你的 RSS 阅读器</li>
-      <li>也可以直接拿 Feed 去接自动化工作流</li>
-      <li>如果你只想低频关注，建议先订阅，再按专题挑着读</li>
-    </ul>
   </section>
 </BaseLayout>
 
@@ -109,10 +100,17 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
     line-height: 1.7;
   }
 
-  .content-list,
-  .instructions {
-    margin: 1rem 0 0;
+  .content-list {
+    margin: 1rem 0;
     padding-left: 1.25rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    margin-top: 1rem;
   }
 
   .feeds-section {
@@ -182,17 +180,5 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
     cursor: pointer;
     transition: background 0.2s ease;
     white-space: nowrap;
-  }
-
-  .copy-btn:hover {
-    background: #2563eb;
-  }
-
-  .note {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    background: rgba(59, 130, 246, 0.1);
-    border-radius: 8px;
-    margin-top: 1rem;
   }
 </style>

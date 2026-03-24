@@ -1,79 +1,52 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles', ({ data }) => !data.draft && Boolean(data.category));
-  const projects = await getCollection('projects', ({ data }) => !data.draft && Boolean(data.category));
-  const categories = Array.from(new Set([
-    ...articles.map((article) => article.data.category).filter((value): value is string => Boolean(value)),
-    ...projects.map((project) => project.data.category).filter((value): value is string => Boolean(value)),
-  ]));
+  const categories = [...new Set(articles.map((article) => article.data.category).filter((value): value is string => Boolean(value)))];
 
   return categories.map((category) => ({
     params: { category },
     props: {
       category,
-      articles: articles.filter((article) => article.data.category === category),
-      projects: projects.filter((project) => project.data.category === category),
+      articles: articles
+        .filter((article) => article.data.category === category)
+        .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()),
     },
   }));
 }
 
-const { category, articles, projects } = Astro.props;
+const { category, articles } = Astro.props;
 ---
 
-<BaseLayout title={`${category} 分类`} description={`查看 ${category} 分类下的内容`}>
+<BaseLayout title={`${category} 分类`} description={`查看 ${category} 分类下的文章内容`}>
   <section class="page-header">
     <h1>{category}</h1>
-    <p>该分类下共 {articles.length} 篇文章、{projects.length} 个项目。</p>
+    <p>该分类下共 {articles.length} 篇文章。</p>
   </section>
 
-  <section class="section">
-    <div class="section-header">
-      <h2>文章</h2>
+  {articles.length > 0 ? (
+    <div class="content-list">
+      {articles.map((article) => (
+        <article class="content-card">
+          <h2><a href={`/articles/${article.slug}`}>{article.data.title}</a></h2>
+          <p class="meta">
+            <time datetime={article.data.publishedAt.toISOString()}>
+              {article.data.publishedAt.toLocaleDateString('zh-CN')}
+            </time>
+          </p>
+          <p>{article.data.summary}</p>
+        </article>
+      ))}
     </div>
-    {articles.length > 0 ? (
-      <div class="list-grid">
-        {articles.map((article) => (
-          <article class="item-card">
-            <h3><a href={`/articles/${article.slug}`}>{article.data.title}</a></h3>
-            <p class="meta">{article.data.publishedAt.toLocaleDateString('zh-CN')}</p>
-            <p>{article.data.summary}</p>
-          </article>
-        ))}
-      </div>
-    ) : (
-      <p class="empty-state">该分类下暂无文章。</p>
-    )}
-  </section>
-
-  <section class="section">
-    <div class="section-header">
-      <h2>项目</h2>
-    </div>
-    {projects.length > 0 ? (
-      <div class="list-grid">
-        {projects.map((project) => (
-          <article class="item-card">
-            <h3><a href={`/projects/${project.slug}`}>{project.data.name}</a></h3>
-            <p class="meta">
-              {project.data.publishedAt.toLocaleDateString('zh-CN')}
-              {project.data.status && <span>· {project.data.status}</span>}
-            </p>
-            <p>{project.data.summary}</p>
-          </article>
-        ))}
-      </div>
-    ) : (
-      <p class="empty-state">该分类下暂无项目。</p>
-    )}
-  </section>
+  ) : (
+    <p class="empty-state">该分类下暂无文章。</p>
+  )}
 </BaseLayout>
 
 <style>
-  .page-header,
-  .section {
+  .page-header {
     margin-bottom: 2rem;
   }
 
@@ -83,23 +56,22 @@ const { category, articles, projects } = Astro.props;
     color: var(--text-secondary);
   }
 
-  .list-grid {
+  .content-list {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
-  .item-card {
-    padding: 1.25rem;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
+  .content-card {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .item-card h3 {
-    margin-bottom: 0.35rem;
+  .content-card h2 {
+    margin-bottom: 0.5rem;
   }
 
   .meta {
-    margin-bottom: 0.6rem;
     font-size: 0.875rem;
+    margin-bottom: 0.75rem;
   }
 </style>
