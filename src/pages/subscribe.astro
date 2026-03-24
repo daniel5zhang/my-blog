@@ -6,20 +6,20 @@ const rssUrl = `${siteConfig.siteUrl}/rss.xml`;
 const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
 ---
 
-<BaseLayout title="订阅" description="订阅本站更新">
+<BaseLayout title="订阅" description="订阅 Daniel实验室 更新">
   <section class="page-header">
     <h1>订阅</h1>
-    <p>通过以下方式订阅本站最新内容更新</p>
+    <p>Daniel实验室 把订阅放在很前面，因为这里的内容适合被长期跟踪，而不是偶尔路过。</p>
   </section>
 
   <section class="info-card">
-    <h2>订阅内容范围</h2>
-    <p>当前站点的统一订阅范围包括：</p>
+    <h2>你会订阅到什么</h2>
+    <p>当前统一订阅范围包括：</p>
     <ul class="content-list">
-      <li>📝 <strong>文章</strong> - 技术文章、教程、经验分享</li>
-      <li>🛠 <strong>项目</strong> - 个人项目展示、功能更新</li>
+      <li>📝 <strong>文章</strong>：AI、自动化、数字工作流相关观察与实践</li>
+      <li>🧭 <strong>专题线索</strong>：随着内容增多，专题页会成为长期入口</li>
     </ul>
-    <p class="note">订阅将聚合以上两类内容的最新更新，按更新时间倒序排列。</p>
+    <p class="note">现在先保持统一 Feed，避免一开始就把订阅体系做复杂。</p>
   </section>
 
   <section class="feeds-section">
@@ -29,12 +29,10 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
         <div class="feed-icon">📡</div>
         <div class="feed-info">
           <h3>RSS Feed</h3>
-          <p>标准的 RSS 订阅格式，支持大多数阅读器和浏览器</p>
+          <p>适合 Feedly、Inoreader 等阅读器，长期跟踪更新最省心。</p>
           <div class="feed-url">
             <code>{rssUrl}</code>
-            <button class="copy-btn" data-url={rssUrl} aria-label="复制链接">
-              复制
-            </button>
+            <button class="copy-btn" data-url={rssUrl} aria-label="复制链接">复制</button>
           </div>
         </div>
       </article>
@@ -43,12 +41,10 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
         <div class="feed-icon">📋</div>
         <div class="feed-info">
           <h3>JSON Feed</h3>
-          <p>机器可读的 JSON 格式，更适合程序化处理</p>
+          <p>适合程序化处理，也方便后续接自动化工作流。</p>
           <div class="feed-url">
             <code>{jsonFeedUrl}</code>
-            <button class="copy-btn" data-url={jsonFeedUrl} aria-label="复制链接">
-              复制
-            </button>
+            <button class="copy-btn" data-url={jsonFeedUrl} aria-label="复制链接">复制</button>
           </div>
         </div>
       </article>
@@ -58,25 +54,14 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
   <section class="info-card">
     <h2>使用说明</h2>
     <ul class="instructions">
-      <li>复制上述 Feed 地址，添加到你的 RSS 阅读器（如 Feedly、Inoreader 等）</li>
-      <li>也可以直接在浏览器地址栏输入查看原始内容</li>
-      <li>订阅将自动获取所有文章和项目的最新更新</li>
-    </ul>
-  </section>
-
-  <section class="info-card reminder">
-    <h2>暂不支持的功能</h2>
-    <p>本阶段暂不提供以下功能：</p>
-    <ul class="disabled-list">
-      <li>邮件订阅</li>
-      <li>消息推送订阅</li>
-      <li>分类级 Feed 单独订阅</li>
+      <li>把 Feed 地址丢进你的 RSS 阅读器</li>
+      <li>也可以直接拿 Feed 去接自动化工作流</li>
+      <li>如果你只想低频关注，建议先订阅，再按专题挑着读</li>
     </ul>
   </section>
 </BaseLayout>
 
 <script>
-  // 复制链接功能
   const copyButtons = document.querySelectorAll('.copy-btn');
   copyButtons.forEach((btn) => {
     btn.addEventListener('click', async () => {
@@ -124,21 +109,10 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
     line-height: 1.7;
   }
 
-  .content-list {
-    margin: 1rem 0;
+  .content-list,
+  .instructions {
+    margin: 1rem 0 0;
     padding-left: 1.25rem;
-  }
-
-  .content-list li {
-    margin-bottom: 0.5rem;
-  }
-
-  .note {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    background: rgba(59, 130, 246, 0.1);
-    border-radius: 8px;
-    margin-top: 1rem;
   }
 
   .feeds-section {
@@ -214,30 +188,11 @@ const jsonFeedUrl = `${siteConfig.siteUrl}/feed.json`;
     background: #2563eb;
   }
 
-  .instructions {
-    margin: 0.75rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  .instructions li {
-    margin-bottom: 0.5rem;
-  }
-
-  .reminder {
-    background: rgba(245, 158, 11, 0.1);
-    border-color: rgba(245, 158, 11, 0.3);
-  }
-
-  .reminder h2 {
-    color: #f59e0b;
-  }
-
-  .disabled-list {
-    margin: 0.75rem 0 0;
-    padding-left: 1.25rem;
-  }
-
-  .disabled-list li {
-    opacity: 0.7;
+  .note {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    margin-top: 1rem;
   }
 </style>

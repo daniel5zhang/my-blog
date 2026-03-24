@@ -3,34 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const articles = await getCollection('articles', ({ data }) => !data.draft);
-const projects = await getCollection('projects', ({ data }) => !data.draft);
 
-// 分别统计标签在文章和项目中的使用次数
-const tagMap = new Map<string, { articles: number; projects: number }>();
+const tagMap = new Map<string, number>();
 for (const article of articles) {
   for (const tag of article.data.tags) {
-    const current = tagMap.get(tag) ?? { articles: 0, projects: 0 };
-    current.articles += 1;
-    tagMap.set(tag, current);
-  }
-}
-for (const project of projects) {
-  for (const tag of project.data.tags) {
-    const current = tagMap.get(tag) ?? { articles: 0, projects: 0 };
-    current.projects += 1;
-    tagMap.set(tag, current);
+    tagMap.set(tag, (tagMap.get(tag) ?? 0) + 1);
   }
 }
 
 const tags = Array.from(tagMap.entries())
-  .map(([name, counts]) => ({ name, ...counts, total: counts.articles + counts.projects }))
-  .sort((a, b) => b.total - a.total);
+  .map(([name, count]) => ({ name, count }))
+  .sort((a, b) => b.count - a.count);
 ---
 
-<BaseLayout title="标签" description="按标签浏览内容">
+<BaseLayout title="标签" description="按标签浏览 Daniel实验室 内容">
   <section class="page-header">
     <h1>标签</h1>
-    <p>标签用于串联文章与项目中的细粒度主题。</p>
+    <p>标签是 Daniel实验室 的二级入口，用来把分散文章重新串成主题线索。</p>
   </section>
 
   {tags.length > 0 ? (
@@ -38,7 +27,7 @@ const tags = Array.from(tagMap.entries())
       {tags.map((tag) => (
         <a class="tag-card" href={`/tags/${tag.name}`}>
           <strong>{tag.name}</strong>
-          <span>{tag.articles} 篇 · {tag.projects} 个</span>
+          <span>{tag.count} 篇文章</span>
         </a>
       ))}
     </div>

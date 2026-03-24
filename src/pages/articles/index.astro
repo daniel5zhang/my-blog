@@ -5,14 +5,13 @@ import { getCollection } from 'astro:content';
 const articles = (await getCollection('articles', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
-// 分离 featured 和普通文章
-const featuredArticles = articles.filter(a => a.data.featured);
-const normalArticles = articles.filter(a => !a.data.featured);
+const featuredArticles = articles.filter((a) => a.data.featured);
+const normalArticles = articles.filter((a) => !a.data.featured);
 ---
 
-<BaseLayout title="文章" description="技术文章列表">
+<BaseLayout title="文章" description="Daniel实验室 的文章归档与推荐阅读">
   <h1>文章</h1>
-  <p class="page-description">分享技术心得和实践经验</p>
+  <p class="page-description">这里集中放 Daniel实验室 的主要内容：AI、自动化与数字工作流的观察、拆解与实践。</p>
 
   {articles.length > 0 ? (
     <>
@@ -23,28 +22,15 @@ const normalArticles = articles.filter(a => !a.data.featured);
             {featuredArticles.map((article) => (
               <article class="article-item featured">
                 <span class="featured-badge">推荐</span>
-                <h2>
-                  <a href={`/articles/${article.slug}`}>{article.data.title}</a>
-                </h2>
+                <h2><a href={`/articles/${article.slug}`}>{article.data.title}</a></h2>
                 <p class="article-meta">
                   <time datetime={article.data.publishedAt.toISOString()}>
                     {article.data.publishedAt.toLocaleDateString('zh-CN')}
                   </time>
-                  {article.data.category && (
-                    <span class="category">{article.data.category}</span>
-                  )}
-                  {article.data.updatedAt && (
-                    <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>
-                  )}
+                  {article.data.category && <span class="category">{article.data.category}</span>}
+                  {article.data.updatedAt && <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>}
                 </p>
                 <p class="article-summary">{article.data.summary}</p>
-                {article.data.tags.length > 0 && (
-                  <div class="tags">
-                    {article.data.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
               </article>
             ))}
           </div>
@@ -57,28 +43,15 @@ const normalArticles = articles.filter(a => !a.data.featured);
           <div class="articles-list">
             {normalArticles.map((article) => (
               <article class="article-item">
-                <h2>
-                  <a href={`/articles/${article.slug}`}>{article.data.title}</a>
-                </h2>
+                <h2><a href={`/articles/${article.slug}`}>{article.data.title}</a></h2>
                 <p class="article-meta">
                   <time datetime={article.data.publishedAt.toISOString()}>
                     {article.data.publishedAt.toLocaleDateString('zh-CN')}
                   </time>
-                  {article.data.category && (
-                    <span class="category">{article.data.category}</span>
-                  )}
-                  {article.data.updatedAt && (
-                    <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>
-                  )}
+                  {article.data.category && <span class="category">{article.data.category}</span>}
+                  {article.data.updatedAt && <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>}
                 </p>
                 <p class="article-summary">{article.data.summary}</p>
-                {article.data.tags.length > 0 && (
-                  <div class="tags">
-                    {article.data.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                )}
               </article>
             ))}
           </div>
@@ -177,19 +150,5 @@ const normalArticles = articles.filter(a => !a.data.featured);
   .article-summary {
     margin-bottom: 0.75rem;
     line-height: 1.6;
-  }
-
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    background: var(--bg-secondary);
-    border-radius: 4px;
-    color: var(--text-secondary);
   }
 </style>

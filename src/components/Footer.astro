@@ -1,15 +1,18 @@
 ---
-import { siteTitle } from '../lib/site';
+import { siteConfig, siteTitle } from '../lib/site';
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="footer-content">
-    <p class="copyright">
-      &copy; {currentYear} {siteTitle}. All rights reserved.
-    </p>
+    <div>
+      <p class="copyright">&copy; {currentYear} {siteTitle}</p>
+      <p class="footer-tagline">{siteConfig.tagline}</p>
+    </div>
     <div class="footer-links">
+      <a href="/articles">文章</a>
+      <a href="/topics">专题</a>
       <a href="/subscribe">订阅</a>
       <a href="/search">搜索</a>
       <a href="/archive">归档</a>
@@ -34,15 +37,21 @@ const currentYear = new Date().getFullYear();
     gap: 1rem;
   }
 
-  .copyright {
+  .copyright,
+  .footer-tagline {
     margin: 0;
     color: var(--text-secondary, #6b7280);
     font-size: 0.875rem;
   }
 
+  .footer-tagline {
+    margin-top: 0.3rem;
+  }
+
   .footer-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
   }
 
   .footer-links a {

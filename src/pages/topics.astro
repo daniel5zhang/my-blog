@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { topicConfig } from '../lib/site';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+
+const topicSections = topicConfig.map((topic) => {
+  const related = articles
+    .filter((article) => {
+      const text = [
+        article.data.category ?? '',
+        article.data.title,
+        article.data.summary,
+        ...(article.data.tags ?? []),
+      ]
+        .join(' ')
+        .toLowerCase();
+
+      if (topic.slug === 'ai-observation') return /ai|人工智能|大模型|模型|agent/.test(text);
+      if (topic.slug === 'automation') return /自动化|workflow|工作流|agent|效率/.test(text);
+      return /数字|工作流|网站|内容|订阅|搜索/.test(text);
+    })
+    .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+    .slice(0, 6);
+
+  return { ...topic, related };
+});
+---
+
+<BaseLayout title="专题" description="围绕 Daniel实验室 的核心主题组织内容入口">
+  <section class="page-header">
+    <h1>专题</h1>
+    <p>先用最小可用方式把主题入口搭起来。这里不是复杂 CMS，而是帮助你更快进入 Daniel实验室 关心的几条主线。</p>
+  </section>
+
+  <div class="topics-grid">
+    {topicSections.map((topic) => (
+      <section class="topic-card" id={topic.slug}>
+        <h2>{topic.title}</h2>
+        <p class="topic-description">{topic.description}</p>
+        {topic.related.length > 0 ? (
+          <ul class="topic-list">
+            {topic.related.map((article) => (
+              <li>
+                <a href={`/articles/${article.slug}`}>{article.data.title}</a>
+                <span>{article.data.publishedAt.toLocaleDateString('zh-CN')}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty-state">这个专题还在补内容，后面会持续充实。</p>
+        )}
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-header p,
+  .topic-description,
+  .empty-state,
+  .topic-list span {
+    color: var(--text-secondary);
+  }
+
+  .topics-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .topic-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--bg-secondary);
+  }
+
+  .topic-card h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .topic-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .topic-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+</style>
