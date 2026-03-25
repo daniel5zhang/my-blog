@@ -16,3 +16,9 @@
   - `src/content/articles/2026-03-25-ai-news.md`
 - 保留 `src/content/diary/2026-03-25.md` 为本地内容，不纳入当前正式 Daniel实验室 资产基线。
 - 本轮目标是恢复飞书落表前更干净的内容层基线。
+
+## 2026-03-25 - 第16阶段：GitHub 资产三分类归档收口
+- 按最新确认的三类资产边界，重构了 GitHub 侧文档归档方式。
+- 保留 `docs/operations/` 作为运营线与飞书主控台镜像资产目录。
+- 新增 `docs/openclaw/`，承接 OpenClaw 产品化内容、能力建设与过程留痕文档。
+- 新增 `docs/README.md` 作为总索引，明确三类资产分别看哪里。
