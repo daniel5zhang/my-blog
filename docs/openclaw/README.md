@@ -16,3 +16,7 @@
 - `asset-sync-sop.md`：三类资产同步规则 SOP
 - `role-execution-templates.md`：按角色执行模板（yunying / creator / main+jinhua）
 - `prompt-library.md`：Daniel实验室 标准提示词库
+
+## 知识库正文层
+- 飞书知识库 / 云文档承载 OpenClaw 产品化长正文
+- GitHub 保留对应主文档与镜像留痕

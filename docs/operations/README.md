@@ -25,6 +25,7 @@
 - `sample-workflow-why-site-first.md`：样板流程 04（先做网站，再做分发）
 
 ## 飞书主控台设计与镜像
+- `bitable-mirror/openclaw-knowledgebase-index-mirror.md`：OpenClaw 产品化知识库索引镜像
 - `bitable-mirror/openclaw-product-iteration-mirror.md`：OpenClaw产品迭代镜像模板
 - `bitable-mirror/prompt-library-mirror.md`：提示词库镜像模板
 - `../openclaw/asset-sync-sop.md`：三类资产同步规则 SOP

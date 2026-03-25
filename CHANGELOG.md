@@ -60,3 +60,15 @@
 - 按既定字段落地首版结构，并写入 6 条 OpenClaw 产品化核心资产记录。
 - 在 GitHub 中新增 `OpenClaw产品迭代` 镜像文档，并补充 `docs/operations/README.md`、`docs/operations/bitable-sync-rules.md`、总索引与 `CHANGELOG.md`。
 - 本轮作为 OpenClaw 产品化双留存资产处理。
+
+## 2026-03-25 - 第24阶段：AI新闻日更改写与重建
+- 基于 TechCrunch、The Verge、36氪 的当日 AI 相关线索，重写当日 AI 新闻稿。
+- 将 `src/content/articles/2026-03-25-ai-news.md` 更新为围绕 Anthropic 与五角大楼冲突的中文短文，统一站内 schema 与 SEO 字段。
+- 保持中文口语化、傅盛风格表达，不扩展到站点结构、组件或部署配置。
+- 完成后重新执行站点构建，验证内容可正常进入发布产物。
+
+## 2026-03-25 - 第24阶段：OpenClaw 产品化知识库入飞书
+- 建立 OpenClaw 产品化知识库正文层，首批写入 10 个主题。
+- 将 `OpenClaw产品迭代` 表升级为索引层，补充首批 6 条核心资产的知识库链接、GitHub 文档链接、状态、阶段与下一步。
+- 在 GitHub 中新增知识库索引镜像文档，并更新 `docs/operations/README.md`、`docs/operations/bitable-sync-rules.md`、总索引与 `docs/openclaw/README.md`。
+- 本轮结构明确为：知识库为正文层、表格为索引层、GitHub 为备份层。
