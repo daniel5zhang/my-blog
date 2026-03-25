@@ -1,42 +1,64 @@
-# Daniel实验室 / OpenClaw 资产总索引
+# Daniel实验室 文档总索引
 
-## 一、运营线内容（飞书 + GitHub 双留存）
-查看目录：`docs/operations/`
+## 总体口径
+Daniel实验室 当前文档资产分为三类：
+- **运营线资产**：围绕日常推进、台账、排期、审核、复盘的协作资产
+- **OpenClaw 产品化资产**：围绕规则、手册、流程、角色机制、能力建设和长期可复刻交付的产品化资产
+- **网站资产**：围绕站点源码、页面、配置、正式文章和公开站点基线的资产
 
-适用内容：
-- 选题池
-- 内容日历
-- 待改写池
-- 待发布池
-- 审核记录
-- 反馈复盘
-- 试运行方案
-- 飞书主控台镜像模板与同步规则
+这三类资产必须严格分层维护，避免混层。
 
-## 二、OpenClaw 产品化内容（飞书 + GitHub 双留存）
-查看目录：`docs/openclaw/`
+## 一、运营线资产
+主目录：`docs/operations/`
 
-适用内容：
-- 建站方案与阶段留痕
-- 产品建设过程记录
-- Agent 职责边界
-- 自动化边界
-- 网站母稿到分发 SOP
-- OpenClaw 相关样板流程
+### 适用内容
+- 选题池、内容日历、待改写池、待发布池、审核记录、反馈复盘
+- 试运行方案、发布前执行口径
+- 飞书主控台镜像模板与运营同步规则
 
-## 三、Daniel实验室 网站与已发布内容资产（GitHub 为主）
-查看位置：
-- 站点源码：`src/`
-- 正式文章：`src/content/articles/`
-- 站点配置与页面：`src/pages/`、`src/layouts/`
-- 阶段更新记录：`CHANGELOG.md`
+### 维护原则
+- 飞书主控台是主协作面
+- GitHub 保留镜像、规则、模板与关键快照
+- 重点看：`docs/operations/README.md`
 
-## 说明
-- 运营线内容与 OpenClaw 产品化内容，未来都可以进入飞书主控台并在 GitHub 保留备份。
-- Daniel实验室 网站本身与已发布内容资产，以 GitHub 为主，不作为飞书主控台的核心资产层。
-- `docs/openclaw/role-execution-templates.md`：Daniel实验室 按角色执行模板
-- `docs/openclaw/prompt-library.md`：Daniel实验室 标准提示词库
-- `docs/operations/bitable-mirror/prompt-library-mirror.md`：飞书提示词库镜像模板
-- `docs/operations/bitable-mirror/openclaw-product-iteration-mirror.md`：OpenClaw产品迭代镜像模板
-- `docs/operations/bitable-mirror/openclaw-knowledgebase-index-mirror.md`：OpenClaw 产品化知识库索引镜像
-- `docs/operations/bitable-mirror/openclaw-manual-formal-mirror.md`：OpenClaw产品化手册正式版镜像
+## 二、OpenClaw 产品化资产
+主目录：`docs/openclaw/`
+
+### 适用内容
+- Agent 职责边界、协作机制、自动化边界
+- 产品建设日志、标准提示词库、执行模板、同步规则
+- OpenClaw产品化手册及其维护 SOP
+- 面向复刻、交付、销售表达的结构化产品资料
+
+### 三层结构
+- **Wiki 正文层**：`OpenClaw产品化手册`（飞书 Wiki）
+- **Bitable 索引层**：`OpenClaw产品迭代`（飞书多维表格）
+- **GitHub 备份层**：`docs/openclaw/`、`docs/operations/bitable-mirror/`、README、SOP、`CHANGELOG.md`
+
+### 维护原则
+- 长正文优先进入 Wiki 正文层
+- 状态、阶段、链接、下一步优先进入 Bitable 索引层
+- GitHub 承担镜像、SOP、README、日志与审计留痕
+- 重点看：`docs/openclaw/README.md`
+
+## 三、网站资产
+主位置：
+- `src/`
+- `src/content/articles/`
+- `src/pages/`
+- `src/layouts/`
+- `CHANGELOG.md`
+
+### 适用内容
+- 站点源码、页面、布局、配置
+- 已发布文章与正式内容基线
+
+### 维护原则
+- GitHub 为主维护面
+- 飞书不作为站点正文和源码的主维护层
+- 飞书只承接必要的引用信息，不承接站点正文与源码
+
+## 四、建议阅读顺序
+1. 先判断任务属于哪一类资产
+2. 再进入对应 README
+3. 再根据 SOP / 模板 / 镜像文档执行

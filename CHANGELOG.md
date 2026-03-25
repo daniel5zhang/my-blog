@@ -102,3 +102,8 @@
 - 新增 `docs/openclaw/manual-maintenance-sop.md`，固化正式手册的后续维护规则。
 - 明确正文层、索引层、备份层的维护边界，以及正文新增、索引更新、节点 move、最小留痕与失败排障顺序。
 - 在 `docs/openclaw/README.md` 补充入口，并更新 `CHANGELOG.md`。
+
+## 2026-03-25 - 第31阶段：索引口径统一与周期性维护流程固化
+- 重写 `docs/README.md`、`docs/operations/README.md`、`docs/openclaw/README.md`，统一三类资产边界与 OpenClaw 产品化三层结构口径。
+- 新增 `docs/openclaw/recurring-maintenance-workflow.md`，固化按日 / 按周 / 按里程碑的周期性维护执行流程。
+- 明确 `main` / `jinhua` / `yunying` 的职责分工、最小留痕要求，以及 `need_user_authorization` 时的停、记、重试方式。
