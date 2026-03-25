@@ -37,6 +37,9 @@ const { title, description, image, seo = {} } = Astro.props;
   </head>
   <body>
     <div class="site-wrapper">
+      <div class="sketch-orbit orbit-left" aria-hidden="true"></div>
+      <div class="sketch-orbit orbit-right" aria-hidden="true"></div>
+      <div class="sketch-grid" aria-hidden="true"></div>
       <Navigation />
       <main class="main-content">
         <slot />
@@ -47,17 +50,177 @@ const { title, description, image, seo = {} } = Astro.props;
 </html>
 
 <style>
+  :global(body) {
+    background:
+      radial-gradient(circle at top left, rgba(94, 234, 212, 0.16), transparent 22%),
+      radial-gradient(circle at right 18%, rgba(59, 130, 246, 0.12), transparent 18%),
+      linear-gradient(180deg, #fffdf8 0%, #f7f4ec 100%);
+    color: var(--text-primary);
+    font-family: 'SF Pro Display', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  }
+
+  :global(body)::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image:
+      linear-gradient(0deg, transparent 24%, rgba(38, 38, 38, 0.08) 25%, transparent 26%),
+      linear-gradient(90deg, transparent 24%, rgba(38, 38, 38, 0.08) 25%, transparent 26%);
+    background-size: 22px 22px;
+    mix-blend-mode: multiply;
+  }
+
+  :global(h1),
+  :global(h2),
+  :global(h3) {
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+  }
+
+  :global(h1) {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1.05;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.95), 4px 4px 0 rgba(15, 23, 42, 0.08);
+  }
+
+  :global(a) {
+    text-underline-offset: 0.18em;
+  }
+
   .site-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: clip;
   }
 
   .main-content {
+    position: relative;
     flex: 1;
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem 4rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    z-index: 1;
+  }
+
+  .main-content::before,
+  .main-content::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border: 2px dashed rgba(15, 23, 42, 0.12);
+    border-radius: 999px;
+    filter: blur(0.2px);
+  }
+
+  .main-content::before {
+    width: 160px;
+    height: 52px;
+    top: 0.6rem;
+    left: -2rem;
+    transform: rotate(-9deg);
+  }
+
+  .main-content::after {
+    width: 130px;
+    height: 44px;
+    right: -1.5rem;
+    bottom: 3rem;
+    transform: rotate(11deg);
+  }
+
+  .sketch-grid,
+  .sketch-orbit {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sketch-grid {
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.08), transparent 16%),
+      radial-gradient(circle at 80% 30%, rgba(244, 114, 182, 0.09), transparent 18%),
+      radial-gradient(circle at 70% 80%, rgba(45, 212, 191, 0.08), transparent 18%);
+  }
+
+  .sketch-orbit {
+    width: 18rem;
+    height: 18rem;
+    border: 2px solid rgba(15, 23, 42, 0.08);
+    border-radius: 44% 56% 51% 49% / 52% 43% 57% 48%;
+    animation: floaty 12s ease-in-out infinite;
+  }
+
+  .orbit-left {
+    top: 7rem;
+    left: -7rem;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  }
+
+  .orbit-right {
+    right: -6rem;
+    top: 18rem;
+    width: 14rem;
+    height: 14rem;
+    animation-duration: 15s;
+    animation-direction: reverse;
+  }
+
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(0, -14px, 0) rotate(6deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .main-content::before {
+      width: 96px;
+      height: 32px;
+      left: -0.5rem;
+      top: 0.1rem;
+    }
+
+    .main-content::after {
+      width: 84px;
+      height: 28px;
+      right: -0.2rem;
+      bottom: 2rem;
+    }
+
+    .sketch-orbit {
+      opacity: 0.55;
+      width: 11rem;
+      height: 11rem;
+    }
+
+    .orbit-left {
+      left: -5.5rem;
+      top: 6rem;
+    }
+
+    .orbit-right {
+      right: -4.5rem;
+      top: auto;
+      bottom: 5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sketch-orbit {
+      animation: none;
+    }
   }
 </style>

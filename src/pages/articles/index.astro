@@ -10,8 +10,11 @@ const normalArticles = articles.filter((a) => !a.data.featured);
 ---
 
 <BaseLayout title="文章" description="Daniel实验室 的文章归档与推荐阅读">
-  <h1>文章</h1>
-  <p class="page-description">这里集中放 Daniel实验室 的主要内容：AI、自动化与数字工作流的观察、拆解与实践。</p>
+  <section class="list-hero sketch-panel">
+    <p class="eyebrow">AI 观察 · 手绘编排</p>
+    <h1>文章</h1>
+    <p class="page-description">这里集中放 Daniel实验室 的主要内容：AI、自动化与数字工作流的观察、拆解与实践。</p>
+  </section>
 
   {articles.length > 0 ? (
     <>
@@ -20,7 +23,7 @@ const normalArticles = articles.filter((a) => !a.data.featured);
           <h2 class="section-title">推荐文章</h2>
           <div class="featured-list">
             {featuredArticles.map((article) => (
-              <article class="article-item featured">
+              <article class="article-item featured sketch-panel">
                 <span class="featured-badge">推荐</span>
                 <h2><a href={`/articles/${article.slug}`}>{article.data.title}</a></h2>
                 <p class="article-meta">
@@ -28,7 +31,7 @@ const normalArticles = articles.filter((a) => !a.data.featured);
                     {article.data.publishedAt.toLocaleDateString('zh-CN')}
                   </time>
                   {article.data.category && <span class="category">{article.data.category}</span>}
-                  {article.data.updatedAt && <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>}
+                  {article.data.updatedAt && <span class="updated">更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}</span>}
                 </p>
                 <p class="article-summary">{article.data.summary}</p>
               </article>
@@ -42,14 +45,14 @@ const normalArticles = articles.filter((a) => !a.data.featured);
           {featuredArticles.length > 0 && <h2 class="section-title">全部文章</h2>}
           <div class="articles-list">
             {normalArticles.map((article) => (
-              <article class="article-item">
+              <article class="article-item sketch-panel">
                 <h2><a href={`/articles/${article.slug}`}>{article.data.title}</a></h2>
                 <p class="article-meta">
                   <time datetime={article.data.publishedAt.toISOString()}>
                     {article.data.publishedAt.toLocaleDateString('zh-CN')}
                   </time>
                   {article.data.category && <span class="category">{article.data.category}</span>}
-                  {article.data.updatedAt && <span class="updated">（更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}）</span>}
+                  {article.data.updatedAt && <span class="updated">更新于 {article.data.updatedAt.toLocaleDateString('zh-CN')}</span>}
                 </p>
                 <p class="article-summary">{article.data.summary}</p>
               </article>
@@ -64,15 +67,61 @@ const normalArticles = articles.filter((a) => !a.data.featured);
 </BaseLayout>
 
 <style>
+  .list-hero {
+    position: relative;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .list-hero::after {
+    content: '';
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    right: -1.5rem;
+    top: -1.5rem;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.2), transparent 72%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 2px dashed rgba(15, 23, 42, 0.22);
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    transform: rotate(-3deg);
+  }
+
   .page-description {
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    max-width: 60ch;
+    line-height: 1.8;
   }
 
   .section-title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     margin-bottom: 1.25rem;
     color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.05rem;
+    width: 100%;
+    height: 0.5rem;
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.4), rgba(59, 130, 246, 0));
+    z-index: -1;
+    transform: skewX(-16deg);
   }
 
   .featured-section {
@@ -83,39 +132,58 @@ const normalArticles = articles.filter((a) => !a.data.featured);
   .articles-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .sketch-panel {
+    position: relative;
+    padding: 1.35rem 1.4rem;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 24px 18px 22px 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 252, 245, 0.92));
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  .sketch-panel::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed rgba(15, 23, 42, 0.12);
+    border-radius: 18px 14px 16px 20px;
+    pointer-events: none;
   }
 
   .article-item {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
     position: relative;
   }
 
+  .article-item:hover {
+    transform: translateY(-4px) rotate(-0.25deg);
+    box-shadow: 0 22px 36px rgba(15, 23, 42, 0.1);
+  }
+
   .article-item.featured {
-    padding: 1.25rem;
-    padding-top: 1.5rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 12px;
-    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%);
   }
 
   .featured-badge {
     position: absolute;
-    top: 0.75rem;
+    top: 0.9rem;
     right: 1rem;
     font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+    padding: 0.2rem 0.55rem;
+    background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%);
     color: white;
-    border-radius: 4px;
-    font-weight: 600;
+    border-radius: 999px 999px 999px 6px;
+    font-weight: 700;
+    box-shadow: 2px 2px 0 rgba(15, 23, 42, 0.15);
   }
 
   .article-item h2 {
     margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+    font-size: 1.28rem;
+    padding-right: 4rem;
   }
 
   .article-item h2 a {
@@ -125,30 +193,54 @@ const normalArticles = articles.filter((a) => !a.data.featured);
   }
 
   .article-item h2 a:hover {
-    color: #3b82f6;
+    color: #2563eb;
   }
 
   .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
     font-size: 0.875rem;
     color: var(--text-secondary);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.9rem;
   }
 
-  .category {
-    margin-left: 1rem;
-    padding: 0.1rem 0.4rem;
-    background: var(--bg-secondary);
-    border-radius: 4px;
-  }
-
+  .category,
   .updated {
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    opacity: 0.8;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .article-summary {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
+    margin-bottom: 0;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .article-item h2 {
+      padding-right: 0;
+    }
+
+    .featured-badge {
+      position: static;
+      display: inline-flex;
+      margin-bottom: 0.8rem;
+    }
+
+    .sketch-panel {
+      border-radius: 18px 14px 16px 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sketch-panel {
+      transition: none;
+    }
   }
 </style>

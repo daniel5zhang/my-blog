@@ -27,7 +27,8 @@ const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
 ---
 
 <BaseLayout title="归档" description="按时间回看 Daniel实验室 的文章更新轨迹">
-  <section class="page-header">
+  <section class="page-header sketch-panel">
+    <p class="eyebrow">时间轴 · 笔记感</p>
     <h1>归档</h1>
     <p>这里按时间线整理 Daniel实验室 的文章更新，方便回看判断是怎么一步步形成的。</p>
   </section>
@@ -35,7 +36,7 @@ const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
   {archiveGroups.length > 0 ? (
     <div class="archive-list">
       {archiveGroups.map((group) => (
-        <section class="archive-group">
+        <section class="archive-group sketch-panel">
           <h2>{group.label} <span class="archive-count">共 {group.count} 篇</span></h2>
           <ul>
             {group.items.map((article) => (
@@ -57,9 +58,39 @@ const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
 </BaseLayout>
 
 <style>
+  .sketch-panel {
+    position: relative;
+    padding: 1.35rem 1.4rem;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 24px 18px 22px 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 252, 245, 0.92));
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+  }
+
+  .sketch-panel::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed rgba(15, 23, 42, 0.12);
+    border-radius: 18px 14px 16px 20px;
+    pointer-events: none;
+  }
+
   .page-header,
   .archive-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 2px dashed rgba(15, 23, 42, 0.22);
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    transform: rotate(-3deg);
   }
 
   .page-header p,
@@ -68,17 +99,33 @@ const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
     color: var(--text-secondary);
   }
 
+  .page-header p {
+    margin-bottom: 0;
+    line-height: 1.8;
+    max-width: 60ch;
+  }
+
+  .archive-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
   .archive-group h2 {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 
   .archive-count {
     font-size: 0.875rem;
     font-weight: normal;
     color: var(--text-secondary);
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .archive-group ul {
@@ -90,21 +137,48 @@ const archiveGroups = Array.from(archiveMap.entries()).map(([key, items]) => {
   }
 
   .archive-group li {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 0.35rem;
-    padding-bottom: 0.85rem;
-    border-bottom: 1px solid var(--border-color);
+    padding: 0.95rem 0 0.95rem 1rem;
+    border-bottom: 1px dashed rgba(15, 23, 42, 0.14);
+    position: relative;
+  }
+
+  .archive-group li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.3rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f59e0b, #14b8a6);
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+  }
+
+  .archive-group li:last-child {
+    border-bottom: none;
   }
 
   .archive-group li a {
-    font-weight: 500;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .archive-group li a:hover {
+    color: #2563eb;
   }
 
   .archive-summary {
     font-size: 0.875rem;
     color: var(--text-secondary);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .sketch-panel {
+      border-radius: 18px 14px 16px 12px;
+    }
   }
 </style>
