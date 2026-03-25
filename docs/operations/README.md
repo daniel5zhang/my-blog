@@ -25,6 +25,7 @@
 - `sample-workflow-why-site-first.md`：样板流程 04（先做网站，再做分发）
 
 ## 飞书主控台设计与镜像
+- `bitable-mirror/prompt-library-mirror.md`：提示词库镜像模板
 - `../openclaw/asset-sync-sop.md`：三类资产同步规则 SOP
 - `feishu-bitable-rollout-record.md`：飞书运营主控台落地记录
 - `feishu-bitable-control-tower-plan.md`：飞书多维表格主控台方案

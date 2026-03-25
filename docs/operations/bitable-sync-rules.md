@@ -41,3 +41,13 @@
 - GitHub 不追求实时同步飞书每一次状态波动
 - GitHub 只保留“值得沉淀”的镜像与里程碑
 - 飞书一旦正式落表，字段结构应优先与 GitHub 镜像模板对齐
+
+## 六、提示词库的同步口径
+- `提示词库` 属于“运营线 + OpenClaw 产品化”的双留存资产。
+- 飞书中的 `提示词库` 表，承接后续日常查询与调用。
+- GitHub 中对应的主文档为：`docs/openclaw/prompt-library.md`
+- GitHub 中对应的镜像文档为：`docs/operations/bitable-mirror/prompt-library-mirror.md`
+- 当提示词新增、删除、角色归属变化、留痕要求变化时：
+  - 先更新主文档 `docs/openclaw/prompt-library.md`
+  - 再同步更新飞书 `提示词库`
+  - 最后回写镜像文档与 `CHANGELOG.md`

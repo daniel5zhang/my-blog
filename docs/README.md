@@ -36,3 +36,4 @@
 - Daniel实验室 网站本身与已发布内容资产，以 GitHub 为主，不作为飞书主控台的核心资产层。
 - `docs/openclaw/role-execution-templates.md`：Daniel实验室 按角色执行模板
 - `docs/openclaw/prompt-library.md`：Daniel实验室 标准提示词库
+- `docs/operations/bitable-mirror/prompt-library-mirror.md`：飞书提示词库镜像模板
