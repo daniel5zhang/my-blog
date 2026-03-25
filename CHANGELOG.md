@@ -88,3 +88,8 @@
 - 在 `OpenClaw产品迭代` 表中新增 `飞书知识库操作与排障 SOP` 索引记录，补入知识库链接与 GitHub 文档链接。
 - 为 `OpenClaw产品化手册` 增加可导航结构：更新 `00-总览` 总导航，并为 8 个一级主题页补充导航信息。
 - 已验证 `feishu_wiki_space_node.create` 在显式传 `node_type=origin` 时可用，本轮保留“文档级导航已完成”的结果，不强行重建完整节点树。
+
+## 2026-03-25 - 第28阶段：OpenClaw产品化手册节点层级管理
+- 盘点 `OpenClaw产品化手册` 根节点下现有节点清单，确认根级已具备 `00-总览` 到 `07-迭代日志` 的正式一级主题。
+- 复用并移动现有正文节点，建立第一批正式二级层级，覆盖环境、角色、模型、安全、网站与运营、交付、迭代日志等主题。
+- 验证 `feishu_wiki_space_node.move` 可用，`feishu_wiki_space_node.create` 在显式传 `node_type=origin` 时可用。

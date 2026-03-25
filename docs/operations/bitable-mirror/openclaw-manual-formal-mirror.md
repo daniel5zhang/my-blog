@@ -57,3 +57,49 @@
 - 已在 8 个一级主题页追加导航区块，包含：本节包含内容 / 上级入口 / 相关链接 / 返回总览。
 - 已验证 `feishu_wiki_space_node.create` 在显式传 `node_type=origin` 时可用。
 - 本轮未强行重建完整节点树，保留“文档级导航完成 + 节点能力已验证”结果。
+
+## 第三步：节点层级管理结果
+
+### 根节点清单（盘点后）
+- 首页 | node_token=`L2wWwf1pTi9Xvfky5bJcQpH5nah` | obj_token=`FT5SdRxjtoXEi8xPpQGcC9nhnEh` | parent=`ROOT`
+- 00-总览 | node_token=`Pc65woXdDi807AkOAZLcXqumnKd` | obj_token=`RWNLdGcY5oj9FWx8eh0cWEzhnmb` | parent=`ROOT`
+- 01-环境与安装 | node_token=`P4Egw6BDdiHNQzk9jqYccmItnac` | obj_token=`HSpJdmIUYo4frpxbkSGc7SkLnQg` | parent=`ROOT`
+- 02-角色与协作 | node_token=`HehswGywPiaKtUke5XUcfJRqnqb` | obj_token=`PwUNdVFVCortGtxrthhc3dGon1e` | parent=`ROOT`
+- 03-模型与渠道 | node_token=`OXcwwXUrkiDalikojYIcs3ngnNd` | obj_token=`JvkFdWXUwoxivQx89cDcpJMjn1c` | parent=`ROOT`
+- 04-安全与运维 | node_token=`MAU8wAME2i7sDtkH979cIE1Dnuh` | obj_token=`AXekdPZuuoN5LBxOsR7c0DUPnub` | parent=`ROOT`
+- 05-网站与运营 | node_token=`UU4pwhp0Qi9p1Qk75wFcALbJn7d` | obj_token=`NCGEdi0PLov297xoD8rc5SM6ntc` | parent=`ROOT`
+- 06-交付与复刻 | node_token=`DwWCw4mOfiBfsgkjqnscL7qDnke` | obj_token=`NI8VdHltaoYExWxPo8pcffbUnZf` | parent=`ROOT`
+- 07-迭代日志 | node_token=`ET3MwtlSHidrzakCT2Oc8LFbnoe` | obj_token=`YHt3d3MR5oXzvTxtdwvc8qHdnJd` | parent=`ROOT`
+
+### 本轮已复用并移动到正式树的二级正文
+- 挂到 `01-环境与安装`：
+  - `安装与修复时间线`
+  - `环境依赖与运行清单`
+  - `Skills与Plugins安装清单`
+- 挂到 `02-角色与协作`：
+  - `Agent角色矩阵`
+  - `协作机制与指挥链`
+- 挂到 `03-模型与渠道`：
+  - `模型配置矩阵`
+  - `飞书接入与授权机制`
+- 挂到 `04-安全与运维`：
+  - `安全加固方案`
+  - `运维与排障手册`
+- 挂到 `05-网站与运营`：
+  - `Daniel实验室建站全过程`
+  - `运营自动化体系`
+  - `三层同步机制`
+- 挂到 `06-交付与复刻`：
+  - `可复刻交付方案`
+- 挂到 `07-迭代日志`：
+  - `迭代路线图`
+  - `迭代日志总表`
+
+### 关键确认
+- `feishu_wiki_space_node.move` 可用
+- `feishu_wiki_space_node.create` 在显式传 `node_type=origin` 时可用
+- 当前已从“仅文档级导航”推进到“根级一级主题 + 一批正式二级正文”的可管理层级
+
+### 暂未继续处理的节点
+- `00-总览` 当前保留为一级总入口，没有继续向下挂子节点
+- 未继续批量整理所有剩余文档之间的更深层级，是为了避免在本轮无新增需求下过度重排
