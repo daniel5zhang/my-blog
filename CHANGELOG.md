@@ -107,3 +107,8 @@
 - 重写 `docs/README.md`、`docs/operations/README.md`、`docs/openclaw/README.md`，统一三类资产边界与 OpenClaw 产品化三层结构口径。
 - 新增 `docs/openclaw/recurring-maintenance-workflow.md`，固化按日 / 按周 / 按里程碑的周期性维护执行流程。
 - 明确 `main` / `jinhua` / `yunying` 的职责分工、最小留痕要求，以及 `need_user_authorization` 时的停、记、重试方式。
+
+## 2026-03-25 - 第32阶段：周期性维护流程同步到飞书正式层
+- 在 `OpenClaw产品化手册` 中新增正式正文 `周期性维护执行流程`，并挂到 `07-迭代日志`。
+- 在 `OpenClaw产品迭代` 中新增对应索引记录，补入知识库链接、GitHub 文档链接、状态、阶段与下一步。
+- 在 GitHub 侧补充正式镜像、README 与 `CHANGELOG.md` 留痕。
