@@ -115,3 +115,12 @@
 - 知识库链接：https://www.feishu.cn/wiki/F8qEw1zBZi4CNnk6AQMcGEGInog
 - GitHub 文档：`docs/openclaw/recurring-maintenance-workflow.md`
 - 已同步进入 `OpenClaw产品迭代` 索引层
+
+## 第33阶段：周期性维护流程配套模板同步
+- 新增正式正文：`周检查清单`
+  - 知识库链接：https://www.feishu.cn/wiki/ToNhw6jJAi4sSTk4mK6cysbbnCf
+  - 所属一级主题：`07-迭代日志`
+- 新增正式正文：`里程碑复盘模板`
+  - 知识库链接：https://www.feishu.cn/wiki/XAkwwThgWiBCHKkkxwScqAW8nCe
+  - 所属一级主题：`07-迭代日志`
+- 两条内容均已同步进入 `OpenClaw产品迭代` 索引层

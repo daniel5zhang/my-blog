@@ -112,3 +112,13 @@
 - 在 `OpenClaw产品化手册` 中新增正式正文 `周期性维护执行流程`，并挂到 `07-迭代日志`。
 - 在 `OpenClaw产品迭代` 中新增对应索引记录，补入知识库链接、GitHub 文档链接、状态、阶段与下一步。
 - 在 GitHub 侧补充正式镜像、README 与 `CHANGELOG.md` 留痕。
+
+## 2026-03-25 - 第33阶段：周期性维护流程配套模板落地
+- 新增 `docs/openclaw/weekly-maintenance-checklist.md`，固化周检查清单。
+- 新增 `docs/openclaw/milestone-retrospective-template.md`，固化里程碑复盘模板。
+- 在 `docs/openclaw/README.md` 补充模板入口，并准备同步到飞书正式层。
+
+## 2026-03-25 - 第33阶段：周期性维护流程配套模板同步到飞书正式层
+- 新增 `docs/openclaw/weekly-maintenance-checklist.md` 与 `docs/openclaw/milestone-retrospective-template.md`。
+- 已将两份模板同步到 `OpenClaw产品化手册`，并挂到 `07-迭代日志`。
+- 已在 `OpenClaw产品迭代` 中新增对应索引记录，补入知识库链接、GitHub 文档链接、状态、阶段与下一步。

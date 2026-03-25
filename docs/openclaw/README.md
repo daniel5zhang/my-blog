@@ -36,6 +36,8 @@
 - `feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP
 - `manual-maintenance-sop.md`：OpenClaw产品化手册后续维护 SOP
 - `recurring-maintenance-workflow.md`：OpenClaw产品化手册周期性维护执行流程
+- `weekly-maintenance-checklist.md`：OpenClaw产品化手册周检查清单
+- `milestone-retrospective-template.md`：OpenClaw产品化手册里程碑复盘模板
 
 ## 五、能力建设与执行资产
 - `agent-roles.md`：各 Agent 职责边界
