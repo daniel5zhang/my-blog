@@ -122,3 +122,8 @@
 - 新增 `docs/openclaw/weekly-maintenance-checklist.md` 与 `docs/openclaw/milestone-retrospective-template.md`。
 - 已将两份模板同步到 `OpenClaw产品化手册`，并挂到 `07-迭代日志`。
 - 已在 `OpenClaw产品迭代` 中新增对应索引记录，补入知识库链接、GitHub 文档链接、状态、阶段与下一步。
+
+## 2026-03-25 - 第34阶段：第一次真实周巡检记录样板落地
+- 删除旧定时任务产物：`src/content/articles/2026-03-25-ai-news.md`。
+- 新增 `docs/openclaw/weekly-maintenance-sample-2026-03-25.md`，作为第一次真实周巡检记录样板。
+- 样板基于当前真实状态填写：8 个一级主题、三层结构、已同步的维护流程与模板、当前授权特征与下周动作。
