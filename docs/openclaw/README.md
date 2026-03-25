@@ -13,3 +13,4 @@
 ## OpenClaw 样板流程
 - `sample-workflow-ai-agent.md`：样板流程 01（AI Agent 工作流）
 - `sample-workflow-openclaw.md`：样板流程 02（OpenClaw 观察）
+- `asset-sync-sop.md`：三类资产同步规则 SOP
