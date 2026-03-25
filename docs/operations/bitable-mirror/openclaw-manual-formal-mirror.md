@@ -137,3 +137,8 @@
   - 知识库链接：https://www.feishu.cn/wiki/DIz3witv2iOK61kADXJcnXzxnfd
   - 所属一级主题：`07-迭代日志`
 - 已同步进入 `OpenClaw产品迭代` 索引层
+
+## 第36阶段：产品建设主日志连续化
+- `product-build-log.md` 已从第10阶段继续回填到第31阶段
+- 飞书“产品建设日志”正文已补阶段 11–31 摘要
+- `OpenClaw产品迭代` 中“产品建设日志”索引记录已更新摘要、阶段、下一步、备注
