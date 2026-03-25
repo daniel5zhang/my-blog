@@ -83,3 +83,8 @@
 - 新增 `docs/openclaw/feishu-knowledgebase-sop.md`，固化飞书知识库正文创建、Wiki 节点管理、已有文档挂载与授权排障口径。
 - 在 `docs/openclaw/README.md` 与 `docs/operations/README.md` 补充 SOP 索引入口。
 - 明确当前默认稳定路径：正式正文优先用 `feishu_create_doc(wiki_space=...)`，不把 `feishu_wiki_space_node.create` 作为默认正文创建路径。
+
+## 2026-03-25 - 第27阶段：OpenClaw产品化手册导航与索引补强
+- 在 `OpenClaw产品迭代` 表中新增 `飞书知识库操作与排障 SOP` 索引记录，补入知识库链接与 GitHub 文档链接。
+- 为 `OpenClaw产品化手册` 增加可导航结构：更新 `00-总览` 总导航，并为 8 个一级主题页补充导航信息。
+- 已验证 `feishu_wiki_space_node.create` 在显式传 `node_type=origin` 时可用，本轮保留“文档级导航已完成”的结果，不强行重建完整节点树。
