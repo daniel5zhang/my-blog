@@ -33,6 +33,7 @@
 - `asset-sync-sop.md`：三类资产同步规则 SOP
 - `distribution-sop.md`：网站母稿到外部分发改写 SOP
 - `automation-boundaries.md`：半自动运营边界与节奏
+- `environment-installation-and-configuration.md`：环境安装与配置
 - `feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP
 - `manual-maintenance-sop.md`：OpenClaw产品化手册后续维护 SOP
 - `recurring-maintenance-workflow.md`：OpenClaw产品化手册周期性维护执行流程

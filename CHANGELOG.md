@@ -141,3 +141,10 @@
 - 将 `docs/openclaw/product-build-log.md` 从第10阶段扩展回填到第31阶段。
 - 回填内容基于仓库内已存在的文档、CHANGELOG、镜像与正式同步资产，不新增虚构事项。
 - 让产品建设日志从“主控台准备”延展到“正式手册、维护规则、维护流程、真实样板”阶段。
+
+## 2026-03-25 - 第37阶段：第一批主干正式正文落地
+- 新增 `docs/openclaw/openclaw-product-overview.md`，作为 `00-总览` 的正式长文。
+- 新增 `docs/openclaw/environment-installation-and-configuration.md`，作为 `01-环境与安装` 的正式长文。
+- 新增 `docs/openclaw/multi-agent-architecture-and-responsibilities.md`，作为 `02-角色与协作` 的正式长文。
+- 新增 `docs/openclaw/model-channel-and-feishu-collaboration.md`，作为 `03-模型与渠道` 的正式长文。
+- 四篇正文基于当前已验证事实扩写，形成可阅读、可培训、可交付的手册主干内容。
