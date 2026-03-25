@@ -28,3 +28,4 @@
 - `feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP
 - `OpenClaw产品化手册`：已补文档级总导航与一级主题回链导航
 - `OpenClaw产品化手册` 当前结构：8 个一级主题保留在根级，关键二级正文已按主题 move 到对应一级节点下
+- `manual-maintenance-sop.md`：OpenClaw产品化手册后续维护 SOP
