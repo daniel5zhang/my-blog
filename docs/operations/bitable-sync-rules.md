@@ -51,3 +51,19 @@
   - 先更新主文档 `docs/openclaw/prompt-library.md`
   - 再同步更新飞书 `提示词库`
   - 最后回写镜像文档与 `CHANGELOG.md`
+
+## 七、OpenClaw产品迭代的同步口径
+- `OpenClaw产品迭代` 属于 OpenClaw 产品化的双留存资产。
+- 飞书中的 `OpenClaw产品迭代` 表，用于后续按产品迭代维度查询核心资产与阶段记录。
+- GitHub 中对应主文档分布于：
+  - `docs/openclaw/product-build-log.md`
+  - `docs/openclaw/asset-sync-sop.md`
+  - `docs/openclaw/role-execution-templates.md`
+  - `docs/openclaw/prompt-library.md`
+  - `docs/openclaw/automation-boundaries.md`
+  - `docs/openclaw/agent-roles.md`
+- GitHub 中对应镜像文档为：`docs/operations/bitable-mirror/openclaw-product-iteration-mirror.md`
+- 当 OpenClaw 产品化核心资产新增、删除、阶段变化、责任角色变化时：
+  - 先更新 GitHub 主文档
+  - 再同步飞书 `OpenClaw产品迭代`
+  - 最后回写镜像文档与 `CHANGELOG.md`
