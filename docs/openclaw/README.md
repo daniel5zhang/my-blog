@@ -25,3 +25,4 @@
 - `OpenClaw产品化手册`（飞书 Wiki）：正式正文层
 - `OpenClaw产品迭代`（飞书 Bitable）：正式索引层
 - GitHub：正式备份层与规则层
+- `feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP

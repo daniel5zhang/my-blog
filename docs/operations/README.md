@@ -25,6 +25,7 @@
 - `sample-workflow-why-site-first.md`：样板流程 04（先做网站，再做分发）
 
 ## 飞书主控台设计与镜像
+- `../openclaw/feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP
 - `bitable-mirror/openclaw-manual-formal-mirror.md`：OpenClaw产品化手册正式版镜像
 - `bitable-mirror/openclaw-knowledgebase-index-mirror.md`：OpenClaw 产品化知识库索引镜像
 - `bitable-mirror/openclaw-product-iteration-mirror.md`：OpenClaw产品迭代镜像模板

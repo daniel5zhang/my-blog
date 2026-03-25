@@ -78,3 +78,8 @@
 - 已写入首批 15+ 篇正式正文，用于承载 OpenClaw 产品化核心资产、配置、协作、建站、运营自动化、交付与迭代内容。
 - 已将 `OpenClaw产品迭代` 表更新为索引层，补充核心资产的知识库链接、GitHub 文档链接、状态、阶段与下一步。
 - 已在 GitHub 中回写正式镜像、README、同步规则与 CHANGELOG，明确“Wiki 正文层 / Bitable 索引层 / GitHub 备份层”结构。
+
+## 2026-03-25 - 第26阶段：飞书知识库操作与排障 SOP 固化
+- 新增 `docs/openclaw/feishu-knowledgebase-sop.md`，固化飞书知识库正文创建、Wiki 节点管理、已有文档挂载与授权排障口径。
+- 在 `docs/openclaw/README.md` 与 `docs/operations/README.md` 补充 SOP 索引入口。
+- 明确当前默认稳定路径：正式正文优先用 `feishu_create_doc(wiki_space=...)`，不把 `feishu_wiki_space_node.create` 作为默认正文创建路径。
