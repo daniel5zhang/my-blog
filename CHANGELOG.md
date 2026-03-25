@@ -72,3 +72,9 @@
 - 将 `OpenClaw产品迭代` 表升级为索引层，补充首批 6 条核心资产的知识库链接、GitHub 文档链接、状态、阶段与下一步。
 - 在 GitHub 中新增知识库索引镜像文档，并更新 `docs/operations/README.md`、`docs/operations/bitable-sync-rules.md`、总索引与 `docs/openclaw/README.md`。
 - 本轮结构明确为：知识库为正文层、表格为索引层、GitHub 为备份层。
+
+## 2026-03-25 - 第25阶段：OpenClaw产品化手册工程（正式版）
+- 在 `OpenClaw产品化手册` Wiki 空间下建立正式手册结构，已覆盖 8 个目录节点。
+- 已写入首批 15+ 篇正式正文，用于承载 OpenClaw 产品化核心资产、配置、协作、建站、运营自动化、交付与迭代内容。
+- 已将 `OpenClaw产品迭代` 表更新为索引层，补充核心资产的知识库链接、GitHub 文档链接、状态、阶段与下一步。
+- 已在 GitHub 中回写正式镜像、README、同步规则与 CHANGELOG，明确“Wiki 正文层 / Bitable 索引层 / GitHub 备份层”结构。

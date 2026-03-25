@@ -39,3 +39,4 @@
 - `docs/operations/bitable-mirror/prompt-library-mirror.md`：飞书提示词库镜像模板
 - `docs/operations/bitable-mirror/openclaw-product-iteration-mirror.md`：OpenClaw产品迭代镜像模板
 - `docs/operations/bitable-mirror/openclaw-knowledgebase-index-mirror.md`：OpenClaw 产品化知识库索引镜像
+- `docs/operations/bitable-mirror/openclaw-manual-formal-mirror.md`：OpenClaw产品化手册正式版镜像

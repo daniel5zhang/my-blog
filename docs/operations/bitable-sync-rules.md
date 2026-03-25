@@ -78,3 +78,14 @@
 2. 再回填飞书知识库正文层
 3. 再更新 `OpenClaw产品迭代` 表索引层
 4. 最后回写 GitHub 镜像、README、CHANGELOG
+
+## 九、OpenClaw产品化手册（正式版）同步口径
+- `OpenClaw产品化手册` Wiki 空间承载正式正文层。
+- `OpenClaw产品迭代` 表承载正式索引层。
+- GitHub 承载正式镜像、README、同步规则与 CHANGELOG 留痕。
+
+### 正式执行顺序
+1. 先在 GitHub 冻结或更新产品化主文档
+2. 再回填到 Wiki 正文层
+3. 再更新 `OpenClaw产品迭代` 为索引层
+4. 最后回写 GitHub 镜像与 CHANGELOG
