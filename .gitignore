@@ -3,3 +3,5 @@ dist/
 .astro/
 /content/
 .env.local
+
+/src/content/diary/
