@@ -39,6 +39,7 @@
 - `weekly-maintenance-checklist.md`：OpenClaw产品化手册周检查清单
 - `milestone-retrospective-template.md`：OpenClaw产品化手册里程碑复盘模板
 - `weekly-maintenance-sample-2026-03-25.md`：第一次真实周巡检记录样板
+- `milestone-retrospective-sample-2026-03-25.md`：第一次真实里程碑复盘样板
 
 ## 五、能力建设与执行资产
 - `agent-roles.md`：各 Agent 职责边界
