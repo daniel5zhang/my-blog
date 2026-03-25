@@ -16,6 +16,17 @@
 - `homepage-and-topics-curation.md`：首页推荐位与专题挂载编排规则
 - `first-pilot-final-review.md`：第一次真实试运行终审与收口清单
 - `first-pilot-plan.md`：第一次真实小规模试运行方案
+- `feishu-bitable-control-tower-plan.md`：飞书多维表格主控台方案
+- `bitable-sync-rules.md`：飞书主控台与 GitHub 备份层同步规则
+- `product-build-log.md`：Daniel实验室 产品建设流程日志
+
+## 飞书镜像模板
+- `bitable-mirror/topic-pool-mirror.md`：选题池镜像模板
+- `bitable-mirror/content-calendar-mirror.md`：内容日历镜像模板
+- `bitable-mirror/rewrite-queue-mirror.md`：待改写池镜像模板
+- `bitable-mirror/publish-queue-mirror.md`：待发布池镜像模板
+- `bitable-mirror/review-log-mirror.md`：审核记录镜像模板
+- `bitable-mirror/feedback-retrospective-mirror.md`：反馈复盘镜像模板
 
 ## 真实台账与样板流程
 - `topic-pool-live.md`：真实选题池（第一版）
