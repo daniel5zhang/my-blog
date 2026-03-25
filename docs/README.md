@@ -34,3 +34,4 @@
 ## 说明
 - 运营线内容与 OpenClaw 产品化内容，未来都可以进入飞书主控台并在 GitHub 保留备份。
 - Daniel实验室 网站本身与已发布内容资产，以 GitHub 为主，不作为飞书主控台的核心资产层。
+- `docs/openclaw/role-execution-templates.md`：Daniel实验室 按角色执行模板
