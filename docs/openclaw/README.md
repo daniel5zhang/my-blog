@@ -34,6 +34,7 @@
 - `distribution-sop.md`：网站母稿到外部分发改写 SOP
 - `automation-boundaries.md`：半自动运营边界与节奏
 - `environment-installation-and-configuration.md`：环境安装与配置
+- `session-management-and-memory-architecture.md`：会话管理与记忆架构
 - `feishu-knowledgebase-sop.md`：飞书知识库操作与排障 SOP
 - `manual-maintenance-sop.md`：OpenClaw产品化手册后续维护 SOP
 - `recurring-maintenance-workflow.md`：OpenClaw产品化手册周期性维护执行流程
@@ -46,7 +47,7 @@
 - `agent-roles.md`：各 Agent 职责边界
 - `role-execution-templates.md`：按角色执行模板（yunying / creator / main+jinhua）
 - `prompt-library.md`：Daniel实验室 标准提示词库
-- `product-build-log.md`：Daniel实验室 产品建设流程日志（当前已连续回填到第31阶段）
+- `product-build-log.md`：Daniel实验室 产品建设流程日志（当前已连续回填到第33阶段）
 - `sample-workflow-ai-agent.md`：样板流程 01（AI Agent 工作流）
 - `sample-workflow-openclaw.md`：样板流程 02（OpenClaw 观察）
 
