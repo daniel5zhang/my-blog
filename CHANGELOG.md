@@ -148,3 +148,20 @@
 - 新增 `docs/openclaw/multi-agent-architecture-and-responsibilities.md`，作为 `02-角色与协作` 的正式长文。
 - 新增 `docs/openclaw/model-channel-and-feishu-collaboration.md`，作为 `03-模型与渠道` 的正式长文。
 - 四篇正文基于当前已验证事实扩写，形成可阅读、可培训、可交付的手册主干内容。
+
+## 2026-03-25 - 第38阶段：会话治理与记忆能力正式化
+- 在 OpenClaw 工作区建立会话治理与记忆分层正式结构，包括 `MEMORY.md`、`memory/YYYY-MM-DD.md` 与各子代理独立记忆文件。
+- 正式启用并验证 `memorySearch`，完成 provider、索引与召回层的可用性确认。
+- 让长期项目记忆从“依赖超长会话”升级为“依赖正式记忆层 + 可检索知识层”。
+
+## 2026-03-25 - 第39阶段：记忆架构进入产品化手册主干
+- 新增 `docs/openclaw/session-management-and-memory-architecture.md`，作为会话治理与记忆架构专题正式正文。
+- 更新 `docs/openclaw/openclaw-product-overview.md`，把正式记忆能力与长期知识恢复流程纳入产品化总览。
+- 更新 `docs/openclaw/environment-installation-and-configuration.md`，把记忆基础设施、embedding 端点与索引重建纳入环境层正式口径。
+- 更新 `docs/openclaw/README.md` 与 `docs/openclaw/product-build-log.md`，让手册目录与产品建设主线承接到记忆能力阶段。
+
+## 2026-03-25 - 飞书正文层升级与记忆架构同步
+- 将 `04-安全与运维`、`05-网站与运营`、`06-交付与复刻`、`07-迭代日志` 四个一级主题页从目录式承载升级为正式详细正文。
+- 将 `docs/openclaw/session-management-and-memory-architecture.md` 正式同步到 `OpenClaw产品化手册`，并挂到 `04-安全与运维` 主题下。
+- 在 `OpenClaw产品迭代` 中新增 `会话管理与记忆架构` 正式正文索引记录。
+- 补充本轮飞书正文层升级的 GitHub 镜像留痕。

@@ -149,3 +149,10 @@
 - `02-角色与协作` 已升级为正式长文：`多Agent架构与职责`
 - `03-模型与渠道` 已升级为正式长文：`模型、渠道与飞书协同`
 - 四篇正文均已同步到 `OpenClaw产品化手册` 对应主题，并在 `OpenClaw产品迭代` 中补齐正式索引
+
+## 飞书正文层升级与记忆架构同步
+- 已将 `04-安全与运维`、`05-网站与运营`、`06-交付与复刻`、`07-迭代日志` 一级主题页升级为正式详细正文，不再只保留目录式导航。
+- 已新增正式正文：`会话管理与记忆架构`
+  - 所属一级主题：`04-安全与运维`
+  - 知识库链接：https://www.feishu.cn/wiki/GNNMwcAQXirFsIkmEoNc0Vi9nMd
+  - GitHub 文档：`docs/openclaw/session-management-and-memory-architecture.md`
