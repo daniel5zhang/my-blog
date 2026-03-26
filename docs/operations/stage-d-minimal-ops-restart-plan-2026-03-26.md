@@ -59,10 +59,7 @@
 
 ```bash
 # 立即禁用该作业（禁止 remove）
-openclaw cron update <job-id> --enabled false
-
-# 或通过 cron tool:
-# cron update action=update, jobId=8de2a424-0fbb-4a3b-af3f-2c5329611d9c, patch={"enabled": false}
+openclaw cron edit <job-id> --enabled false
 
 # 检查最近一次 run 输出
 openclaw cron runs <job-id>
